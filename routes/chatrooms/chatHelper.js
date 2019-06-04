@@ -5,7 +5,8 @@ module.exports = {
   findById,
   add,
   remove,
-  update
+  update,
+  addMember
 };
 
 function find() {
@@ -38,4 +39,12 @@ function update(id, chatroom) {
   return db("chatrooms")
     .where("id", Number(id))
     .update(chatroom);
+}
+
+async function addMember(member) {
+  const [id] = await db("members")
+    .insert(member)
+    .where({ id: member.chatroom_id });
+  console.log(id);
+  return findById(id);
 }
