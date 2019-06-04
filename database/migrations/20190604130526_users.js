@@ -10,7 +10,7 @@ exports.up = function(knex, Promise) {
     tbl.string("last_name").notNullable();
     tbl.string("user_type").notNullable();
     tbl.boolean("anonymous").notNullable();
-    tbl.integer("phone_num", 10).notNullable();
+    tbl.integer("phone_num", 10);
     tbl.string("facebook_id");
     tbl.string("google_id");
   });
