@@ -30,7 +30,7 @@ const sessionConfig = {
 router.use(session(sessionConfig));
 
 router.post('/register', (req, res) => {
-	console.log(req.body);
+	// console.log(req.body);
 	users = req.body;
 	const hash = bcrypt.hashSync(users.password, 10);
 	users.password = hash;
@@ -51,7 +51,7 @@ router.post('/login', (req, res) => {
 	db
 		.login({ email })
 		.then(user => {
-			console.log(user);
+			// console.log(user);
 
 			if (user && bcrypt.compareSync(password, user.password)) {
 				const token = generateToken(user);
@@ -70,7 +70,7 @@ router.post('/login', (req, res) => {
 });
 
 function generateToken(user) {
-	console.log(user);
+	// console.log(user);
 	const payload = {
 		user: user.id,
 		email: user.email
@@ -105,22 +105,21 @@ router.get('/login', (req, res) => {
 router.get(
 	'/google',
 	passport.authenticate('google', {
-		scope: [ 'profile' ]
+		scope: [ 'profile', 'email' ]
 	})
 );
 
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-	res.redirect('/profile'); // will change redirect at later time
+	res.redirect('/profile');
+	router.get(
+		'/auth/google/callback',
+		passport.authenticate('google', { failureRedirect: '/login' }),
+		function(req, res) {
+			res.redirect('/');
+		}
+	);
 });
-
-router.get(
-	'/auth/google/callback',
-	passport.authenticate('google', { failureRedirect: '/login' }), // login from ejs, will change failure redirect at later time
-	function(req, res) {
-		res.redirect('/');
-	}
-);
 
 module.exports = router;
