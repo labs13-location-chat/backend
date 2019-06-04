@@ -75,4 +75,19 @@ router.put("/:id", (req, res) => {
   }
 });
 
+router.post("/:id/members", async (req, res) => {
+  const memberInfo = { ...req.body, chatroom_id: req.params.id };
+
+  try {
+    const member = await db.addMember(memberInfo);
+    res.status(200).json(member);
+  } catch (error) {
+    console.log(error.message);
+
+    res.status(500).json({
+      message: `Couldn't add that member to the chatroom.`
+    });
+  }
+});
+
 module.exports = router;
