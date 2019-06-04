@@ -5,7 +5,8 @@ const db = require('./authHelper');
 const session = require('express-session');
 const knexSessionStore = require('connect-session-knex')(session);
 const jwt = require('jsonwebtoken');
-const cors = require('cors');
+
+const passport = require('passport');
 
 const router = express();
 
@@ -94,5 +95,32 @@ router.get('/logout', (req, res) => {
 		res.end();
 	}
 });
+
+// auth login (will delete later)
+router.get('/login', (req, res) => {
+	res.render('login', { user: req.user });
+});
+
+// auth with google+
+router.get(
+	'/google',
+	passport.authenticate('google', {
+		scope: [ 'profile' ]
+	})
+);
+
+// callback route for google to redirect to
+// hand control to passport to use code to grab profile info
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+	res.redirect('/profile'); // will change redirect at later time
+});
+
+router.get(
+	'/auth/google/callback',
+	passport.authenticate('google', { failureRedirect: '/login' }), // login from ejs, will change failure redirect at later time
+	function(req, res) {
+		res.redirect('/');
+	}
+);
 
 module.exports = router;
