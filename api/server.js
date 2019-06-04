@@ -15,7 +15,7 @@ server.set('view engine', 'ejs');
 server.use(passport.initialize());
 server.use(passport.session());
 
-// set up routes
+// set up routes for google auth
 server.use('/auth', authRouter);
 server.use('/profile', profileRoutes);
 
