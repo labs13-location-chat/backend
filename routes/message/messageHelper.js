@@ -4,25 +4,30 @@ module.exports = {
   find,
   findById,
   update,
-  remove
+  remove,
+  add
 };
 
 function find() {
-  return db("users");
+  return db("messages");
 }
 
 function findById(id) {
-  return db("users").where({ id });
+  return db("messages").where({ id });
 }
 
 function update(id, event) {
-  return db("users")
+  return db("messages")
     .where("id", Number(id))
     .update(event);
 }
 
 function remove(id) {
-  return db("users")
+  return db("messages")
     .where("id", Number(id))
     .del();
+}
+
+function add(message) {
+  return db("messages").insert(message);
 }

@@ -12,8 +12,6 @@ exports.seed = function(knex, Promise) {
           last_name: "Yeshi",
           user_type: "user",
           anonymous: true,
-          latitude: 55.378052,
-          longitude: -3.435973,
           phone_num: 4748933217,
           facebook_id: "",
           google_id: ""
@@ -25,8 +23,6 @@ exports.seed = function(knex, Promise) {
           last_name: "Gray",
           user_type: "user",
           anonymous: true,
-          latitude: 37.09024,
-          longitude: -95.712891,
           phone_num: 4745642672,
           facebook_id: "",
           google_id: ""
@@ -38,8 +34,6 @@ exports.seed = function(knex, Promise) {
           last_name: "Steinmeyer",
           user_type: "user",
           anonymous: true,
-          latitude: 61.52401,
-          longitude: 105.318756,
           phone_num: 4748532431,
           facebook_id: "",
           google_id: ""

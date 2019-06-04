@@ -8,20 +8,20 @@ const db = require('../database/dbConfig');
 //   credentials (in this case, a token, tokenSecret, and Google profile), and
 //   invoke a callback with a user object.
 
-// passport.serializeUser(function(user, done) {
-// 	console.log('fdsjlkjsdealdfjdlkjdlkfjlkkdfljdlkjs', user);
+passport.serializeUser(function(user, done) {
+	console.log('fdsjlkjsdealdfjdlkjdlkfjlkkdfljdlkjs', user);
 
-// 	done(null, user.id);
-// });
+	done(null, user.id);
+});
 
-// passport.deserializeUser(function(id, done) {
-// 	Users.where({ id }).first().then(user => {
-// 		if (!user) {
-// 			done(new Error('User not found' + id));
-// 		}
-// 		return done(null, user);
-// 	});
-// });
+passport.deserializeUser(function(id, done) {
+	Users.where({ id }).first().then(user => {
+		if (!user) {
+			done(new Error('User not found' + id));
+		}
+		return done(null, user);
+	});
+});
 
 passport.use(
 	new GoogleStrategy(
@@ -53,7 +53,7 @@ passport.use(
 			}
 			const newUser = await Users.where({
 				email: profile.emails[0].value
-			}).first();
+			});
 			// console.log('new user add', newUser);
 			done(null, newUser);
 		}
