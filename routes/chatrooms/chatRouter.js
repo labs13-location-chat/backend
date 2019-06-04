@@ -46,7 +46,10 @@ router.delete("/:id", (req, res) => {
           message: "The chatroom with the specified ID does not exist."
         });
       } else {
-        res.status(200).end();
+        res
+          .status(200)
+          .json({ message: "Chatroom deleted" })
+          .end();
       }
     })
     .catch(err => {

@@ -31,7 +31,10 @@ router.delete("/:id", (req, res) => {
           message: "The user with the specified ID does not exist."
         });
       } else {
-        res.status(200).end();
+        res
+          .status(200)
+          .json({ message: "User deleted" })
+          .end();
       }
     })
     .catch(err => {
@@ -47,7 +50,7 @@ router.put("/:id", (req, res) => {
   } else {
     db.update(id, user)
       .then(users => {
-        res.status(200).json(user);
+        res.status(200).json(users);
       })
       .catch(err => {
         res
