@@ -18,7 +18,7 @@ exports.up = function(knex, Promise) {
       .inTable("users")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
-    tbl.timestamps(true);
+    tbl.timestamps(true, true);
   });
 };
 

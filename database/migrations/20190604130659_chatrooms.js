@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
       .onUpdate("CASCADE");
     tbl.boolean("permanent").notNullable();
     tbl.integer("total_users").notNullable();
-    tbl.timestamps(true);
+    tbl.timestamps(true, true);
   });
 };
 
