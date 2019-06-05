@@ -82,26 +82,31 @@ function generateToken(user) {
 	return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
-router.get('/logout', (req, res) => {
-	if (req.session) {
-		req.session.destroy(err => {
-			if (err) {
-				res.send('error logging out');
-			} else {
-				res.send('Logged Out');
-			}
-		});
-	} else {
-		res.end();
-	}
-});
+// router.get('/logout', (req, res) => {
+// 	if (req.session) {
+// 		req.session.destroy(err => {
+// 			if (err) {
+// 				res.send('error logging out');
+// 			} else {
+// 				res.send('Logged Out');
+// 			}
+// 		});
+// 	} else {
+// 		res.end();
+// 	}
+// });
 
-// auth login (will delete later)
+// auth login (will change later)
 router.get('/login', (req, res) => {
-	res.render('login', { user: req.user });
+	res.render('login', { users: req.user });
 });
 
-// auth with google+
+router.get('/logout', (req, res) => {
+	req.logout();
+	res.redirect('/');
+});
+
+// auth with google
 router.get(
 	'/google',
 	passport.authenticate('google', {
@@ -117,7 +122,7 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 		'/auth/google/callback',
 		passport.authenticate('google', { failureRedirect: '/login' }),
 		function(req, res) {
-			res.redirect('/');
+			res.redirect('/profile');
 		}
 	);
 });
