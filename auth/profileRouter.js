@@ -1,15 +1,20 @@
 const router = require('express').Router();
+// const db = require('../database/dbConfig');
 
 const authCheck = (req, res, next) => {
-    if(!req.user){
-        res.redirect('/auth/login');
-    } else {
-        next();
-    }
+	// const user = db('users');
+	if (!req.user) {
+		console.log('Is user here?:', req.user);
+
+		res.redirect('/auth/login');
+	} else {
+		next();
+	}
 };
 
 router.get('/', authCheck, (req, res) => {
-    res.render('profile', { user: req.user });
+	// const user = db('users');
+	res.render('profile', { users: req.user });
 });
 
 module.exports = router;

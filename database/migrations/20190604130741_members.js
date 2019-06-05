@@ -1,6 +1,5 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("members", tbl => {
-    tbl.increments();
     tbl
       .integer("chatroom_id")
       .unsigned()

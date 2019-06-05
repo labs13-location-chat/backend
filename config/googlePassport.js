@@ -9,12 +9,13 @@ const db = require('../database/dbConfig');
 //   invoke a callback with a user object.
 
 passport.serializeUser(function(user, done) {
-	console.log('fdsjlkjsdealdfjdlkjdlkfjlkkdfljdlkjs', user);
+	console.log('User serialized', user);
 
 	done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
+	const Users = db('users');
 	Users.where({ id }).first().then(user => {
 		if (!user) {
 			done(new Error('User not found' + id));
@@ -37,25 +38,28 @@ passport.use(
 			const existing = await Users.where({
 				email: profile.emails[0].value
 			}).first();
-
-			if (existing) {
-				// console.log('user exists:', existing);
-				done(null, existing);
-			} else {
-				await Users.insert({
-					first_name: profile.name.givenName,
-					last_name: profile.name.familyName,
-					email: profile.emails[0].value,
-					google_id: profile.id,
-					user_type: 'user',
-					anonymous: true
+			try {
+				if (existing) {
+					// console.log('user exists:', existing);
+					done(null, existing);
+				} else {
+					await Users.insert({
+						first_name: profile.name.givenName,
+						last_name: profile.name.familyName,
+						email: profile.emails[0].value,
+						google_id: profile.id,
+						user_type: 'user',
+						anonymous: true
+					});
+				}
+				const newUser = await Users.where({
+					email: profile.emails[0].value
 				});
+				// console.log('new user add', newUser);
+				done(null, newUser);
+			} catch (err) {
+				console.error(err.message);
 			}
-			const newUser = await Users.where({
-				email: profile.emails[0].value
-			});
-			// console.log('new user add', newUser);
-			done(null, newUser);
 		}
 	)
 );
