@@ -37,25 +37,28 @@ passport.use(
 			const existing = await Users.where({
 				email: profile.emails[0].value
 			}).first();
-
-			if (existing) {
-				// console.log('user exists:', existing);
-				done(null, existing);
-			} else {
-				await Users.insert({
-					first_name: profile.name.givenName,
-					last_name: profile.name.familyName,
-					email: profile.emails[0].value,
-					google_id: profile.id,
-					user_type: 'user',
-					anonymous: true
+			try {
+				if (existing) {
+					// console.log('user exists:', existing);
+					done(null, existing);
+				} else {
+					await Users.insert({
+						first_name: profile.name.givenName,
+						last_name: profile.name.familyName,
+						email: profile.emails[0].value,
+						google_id: profile.id,
+						user_type: 'user',
+						anonymous: true
+					});
+				}
+				const newUser = await Users.where({
+					email: profile.emails[0].value
 				});
+				// console.log('new user add', newUser);
+				done(null, newUser);
+			} catch (err) {
+				console.error(err.message);
 			}
-			const newUser = await Users.where({
-				email: profile.emails[0].value
-			});
-			// console.log('new user add', newUser);
-			done(null, newUser);
 		}
 	)
 );
