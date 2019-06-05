@@ -9,12 +9,13 @@ const db = require('../database/dbConfig');
 //   invoke a callback with a user object.
 
 passport.serializeUser(function(user, done) {
-	console.log('fdsjlkjsdealdfjdlkjdlkfjlkkdfljdlkjs', user);
+	console.log('User serialized', user);
 
 	done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
+	const Users = db('users');
 	Users.where({ id }).first().then(user => {
 		if (!user) {
 			done(new Error('User not found' + id));
