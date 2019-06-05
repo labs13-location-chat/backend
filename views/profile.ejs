@@ -50,7 +50,7 @@
     <body>
         <nav>
             <ul>
-                <% if (user) { %>
+                <% if (users) { %>
                 <li><a href="/auth/logout">Log out</a></li>
                 <% } else { %>
                 <li><a href="/auth/login">Login</a></li>
@@ -60,10 +60,10 @@
             </ul>
         </nav>
         <header>
-            <h1>Welcome to your profile, <%= user.username %></h1>
+            <h1>Welcome to your profile, <%= users.first_name %></h1>
         </header>
         <main>
-            <img src="<%= user.thumbnail %>" />
+            <img src="" />
             <p>This is your profile thumbnail</p>
         </main>
     </body>
