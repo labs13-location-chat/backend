@@ -4,7 +4,7 @@ const { ChatGrant } = AccessToken;
 
 const chatToken = (identity, config) => {
   const chatGrant = new ChatGrant({
-    serviceSid: config.twilio.chatService
+    serviceSid: process.env.TWILIO_CHAT_SERVICE_SID
   });
   const token = new AccessToken(
     process.env.TWILIO_ACCOUNT_SID,
