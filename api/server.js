@@ -13,6 +13,7 @@ const chatRouter = require('../routes/chatrooms/chatRouter');
 const messageRouter = require('../routes/message/messageRouter');
 const profileRoutes = require('../auth/profileRouter');
 const googlePassport = require('../config/googlePassport');
+var twilioToken = require('../routes/twilio/twilioRoute');
 
 const server = express();
 // const app = connect();
@@ -57,6 +58,7 @@ server.use('/api/users', userRouter);
 server.use('/api', authRouter);
 server.use('/api/chatrooms', chatRouter);
 server.use('/api/messages', messageRouter);
+server.use('/api', twilioToken);
 
 server.get('/', (req, res) => {
 	// res.send('Server is running...');
