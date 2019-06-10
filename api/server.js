@@ -12,7 +12,7 @@ const chatRouter = require("../routes/chatrooms/chatRouter");
 const messageRouter = require("../routes/message/messageRouter");
 const profileRoutes = require("../auth/profileRouter");
 const googlePassport = require("../config/googlePassport");
-var twilioToken = require("../routes/twilio/tokenRoute");
+var twilioToken = require("../routes/twilio/twilioRoute");
 
 const server = express();
 // const app = connect();
