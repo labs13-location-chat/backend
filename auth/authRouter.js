@@ -98,10 +98,10 @@ router.get(
 
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
-// router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-// 	console.log('USER', req.user);
-// 	res.redirect('http://localhost:8081');
-// });
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+	console.log('USER', req.user);
+	res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user));
+});
 
 router.get(
 	'/auth/google/callback',
@@ -110,6 +110,7 @@ router.get(
 	}),
 	function(req, res) {
 		res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user));
+		// res.redirect('/profile');
 	}
 );
 
