@@ -100,7 +100,8 @@ router.get(
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 	console.log('USER', req.user);
-	res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user));
+	res.redirect('LocalChat://login?user=' + JSON.stringify(req.user));
+	// res.redirect('/profile');
 });
 
 router.get(
@@ -109,7 +110,7 @@ router.get(
 		failureRedirect: '/login'
 	}),
 	function(req, res) {
-		res.redirect('OAuthLogin://login?user=' + JSON.stringify(req.user));
+		res.redirect('LocalChat://login?user=' + JSON.stringify(req.user));
 		// res.redirect('/profile');
 	}
 );
