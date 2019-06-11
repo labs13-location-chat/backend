@@ -49,7 +49,11 @@ server.use(express.json());
 server.use(helmet());
 server.use(morgan("dev"));
 const corsOptions = {
-  origin: process.env.BASE_URL
+  origin: process.env.BASE_URL,
+  AccessControlAllowOrigin: [
+    "http://localhost:5000",
+    "https://labs13-localchat.herokuapp.com/"
+  ]
 };
 server.use(cors(corsOptions));
 
