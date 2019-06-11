@@ -1,10 +1,11 @@
 const express = require("express");
+const session = require("express-session");
+const knexSessionStore = require("connect-session-knex")(session);
 const passport = require("passport");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const cors = require("cors");
 // const connect = require('connect');
-const cookieSession = require("cookie-session");
 const keys = require("../auth/keys");
 const userRouter = require("../routes/users/userRouter");
 const authRouter = require("../auth/authRouter");
@@ -22,9 +23,21 @@ server.set("view engine", "ejs");
 
 // cookie session -stores cookie in browser
 server.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [keys.session.cookieKey]
+  session({
+    secret: [keys.session.secret],
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      path: "/",
+      httpOnly: true,
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000
+    },
+    store: new knexSessionStore({
+      knex: require("../database/dbConfig"),
+      createTable: true,
+      clearInterval: 1000 * 60 * 15
+    })
   })
 );
 
@@ -39,6 +52,7 @@ const corsOptions = {
   origin: process.env.BASE_URL
 };
 server.use(cors(corsOptions));
+
 // set up routes for google auth
 server.use("/auth", authRouter);
 server.use("/profile", profileRoutes);
