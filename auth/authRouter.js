@@ -80,26 +80,19 @@ function generateToken(user) {
   return jwt.sign(payload, secrets.jwtSecret, options);
 }
 
-router.get("/logout", (req, res) => {
-  if (req.session) {
-    req.session.destroy(err => {
-      if (err) {
-        res.send("error logging out");
-      } else {
-        res.send("Logged Out");
-      }
-    });
-  } else {
-    res.end();
-  }
-});
-
-// auth login (will delete later)
+// auth login (will change later)
 router.get("/login", (req, res) => {
-  res.render("login", { user: req.user });
+  res.render("login", { users: req.session.user });
 });
 
-// auth with google+
+router.get("/logout", (req, res) => {
+  // console.log("req.session", req.session);
+  req.logout();
+  req.session.destroy();
+  res.redirect("/");
+});
+
+// auth with google
 router.get(
   "/google",
   passport.authenticate("google", {
@@ -110,14 +103,12 @@ router.get(
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
-  // console.log("google call back", req.user);
-  res.redirect("/profile");
-  router.get(
-    "/auth/google/callback",
-    passport.authenticate("google", { failureRedirect: "/login" }),
-    function(req, res) {
-      res.redirect("/");
-    }
+  console.log("req.user.id", req.user);
+  let googleId = req.user.google_id;
+  let token = req.user.token;
+  res.cookie("auth", token);
+  res.redirect(
+    `https://stupefied-poincare-ca528b.netlify.com/?token=${token}&googleId=${googleId}`
   );
 });
 
