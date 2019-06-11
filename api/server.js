@@ -35,8 +35,10 @@ server.use(passport.session());
 server.use(express.json());
 server.use(helmet());
 server.use(morgan("dev"));
-server.use(cors());
-
+const corsOptions = {
+  origin: process.env.BASE_URL
+};
+server.use(cors(corsOptions));
 // set up routes for google auth
 server.use("/auth", authRouter);
 server.use("/profile", profileRoutes);
