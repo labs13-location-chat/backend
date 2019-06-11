@@ -122,7 +122,7 @@ router.get('/logout', (req, res) => {
 		});
 		req.logOut();
 		req.session.destroy(err => {
-			res.redirect('/auth/login');
+			res.redirect('/auth/google');
 			// if (err) {
 			// 	res.send('error logging out');
 			// } else {
