@@ -16,7 +16,6 @@ const googlePassport = require("../config/googlePassport");
 var twilioToken = require("../routes/twilio/twilioRoute");
 
 const server = express();
-// const app = connect();
 
 // set view engine
 server.set("view engine", "ejs");
@@ -44,7 +43,6 @@ server.use(
 // initialize passport
 server.use(passport.initialize());
 server.use(passport.session());
-
 server.use(express.json());
 server.use(helmet());
 server.use(morgan("dev"));
