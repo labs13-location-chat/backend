@@ -110,7 +110,9 @@ router.get(
 		failureRedirect: '/login'
 	}),
 	function(req, res) {
-		res.redirect('labs13localchat://login?user=' + JSON.stringify(req.user));
+		res.redirect(
+			'labs13localchat://login?user=' + JSON.stringify(req.user)
+		);
 		// res.redirect('/profile');
 	}
 );
@@ -122,7 +124,9 @@ router.get('/logout', (req, res) => {
 		});
 		req.logOut();
 		req.session.destroy(err => {
-			res.redirect('/auth/google');
+			res.redirect(
+				'labs13localchat://login?user=' + JSON.stringify(req.user)
+			);
 			// if (err) {
 			// 	res.send('error logging out');
 			// } else {
