@@ -4,6 +4,10 @@ module.exports = {
     clientSecret: process.env.GOOGLE_CLIENT_SECRET
   },
   session: {
-    cookieKey: "randomcookiekey"
+    secret: "randomcookiekeyesecret"
+  },
+  facebook: {
+    clientID: process.env.FB_APP_ID,
+    clientSecret: process.env.FB_APP_SECRET
   }
 };

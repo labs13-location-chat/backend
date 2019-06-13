@@ -14,7 +14,8 @@ exports.seed = function(knex, Promise) {
           anonymous: true,
           phone_num: 4748933217,
           facebook_id: "",
-          google_id: ""
+          google_id: "",
+          token: "123"
         },
         {
           email: "darrena@google.com",
@@ -25,7 +26,8 @@ exports.seed = function(knex, Promise) {
           anonymous: true,
           phone_num: 4745642672,
           facebook_id: "",
-          google_id: ""
+          google_id: "",
+          token: "124"
         },
         {
           email: "dayton@gmail.com",
@@ -36,7 +38,8 @@ exports.seed = function(knex, Promise) {
           anonymous: true,
           phone_num: 4748532431,
           facebook_id: "",
-          google_id: ""
+          google_id: "",
+          token: "125"
         }
       ]);
     });
