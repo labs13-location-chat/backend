@@ -19,7 +19,6 @@ router.get(
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   console.log("USER", req.user);
   res.redirect("labs13localchat://login?user=" + JSON.stringify(req.user));
-  res.redirect("/profile");
 });
 
 router.get(
@@ -29,7 +28,6 @@ router.get(
   }),
   function(req, res) {
     res.redirect("labs13localchat://login?user=" + JSON.stringify(req.user));
-    res.redirect("/profile");
   }
 );
 
@@ -60,7 +58,6 @@ router.get(
   (req, res) => {
     console.log("USER", req.user);
     res.redirect("labs13localchat://login?user=" + JSON.stringify(req.user));
-    // res.redirect("/profile");
   }
 );
 
@@ -71,7 +68,6 @@ router.get(
   }),
   function(req, res) {
     res.redirect("labs13localchat://login?user=" + JSON.stringify(req.user));
-    // res.redirect("/profile");
   }
 );
 
