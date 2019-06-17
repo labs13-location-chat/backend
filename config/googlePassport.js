@@ -77,7 +77,8 @@ passport.use(
 		{
 			clientID: keys.facebook.clientID,
 			clientSecret: keys.facebook.clientSecret,
-			callbackURL: '/auth/facebook/redirect',
+			callbackURL:
+				'https://labs13-localchat.herokuapp.com/auth/facebook/redirect',
 			profileFields: [ 'id', 'emails', 'name', 'picture.type(large)' ]
 		},
 		async (accessToken, refreshToken, profile, done) => {
