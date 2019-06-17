@@ -48,7 +48,7 @@ router.get("/logout", (req, res) => {
 router.get(
   "/facebook",
   passport.authenticate("facebook", {
-    scope: ["user_photos", "email"]
+    scope: ["email"]
   })
 );
 
