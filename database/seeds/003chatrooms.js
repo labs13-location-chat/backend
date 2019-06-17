@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           user_id: 1,
           permanent: false,
           total_users: 2,
-          description: ""
+          description: "Let's all talk about food!"
         },
         {
           name: "Stadium",
@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
           user_id: 2,
           permanent: true,
           total_users: 3,
-          description: ""
+          description: "Come in if you're going to the game!"
         },
         {
           name: "Theatre",
@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
           user_id: 2,
           permanent: true,
           total_users: 4,
-          description: ""
+          description: "Let's watch the latest movies released"
         },
         {
           name: "Animal Show",
@@ -35,7 +35,7 @@ exports.seed = function(knex, Promise) {
           user_id: 1,
           permanent: false,
           total_users: 4,
-          description: ""
+          description: "Group for anyone goign to the Zoo today"
         },
         {
           name: "Concert",
@@ -43,7 +43,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "That band performing in town tonight"
         },
         {
           name: "Showing",
@@ -51,7 +51,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "Talk about the latest TV program that aired last night"
         },
         {
           name: "Book Event",
@@ -59,7 +59,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "Let's discuss that new bestselling novel by that author"
         },
         {
           name: "Danger Room",
@@ -67,7 +67,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "LF group to solve this puzzle!"
         },
         {
           name: "Watch Party",
@@ -75,7 +75,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "Anyone want to watch the new season of that show?"
         },
         {
           name: "Neighboorhood Watch",
@@ -83,7 +83,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "Let's be on the lookout for our community"
         },
         {
           name: "Game Night",
@@ -91,7 +91,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "Role playing and D&D"
         },
         {
           name: "Block Party",
@@ -99,7 +99,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "We're throwing a MASSIVE summer party next week"
         },
         {
           name: "Chill Room",
@@ -107,7 +107,7 @@ exports.seed = function(knex, Promise) {
           user_id: 3,
           permanent: false,
           total_users: 3,
-          description: ""
+          description: "Let's just talk about everyday things and relax"
         },
 
       ]);
