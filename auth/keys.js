@@ -5,5 +5,9 @@ module.exports = {
 	},
 	session: {
 		secret: 'randomcookiekeyesecret'
+	},
+	facebook: {
+		clientID: process.env.FB_APP_ID,
+		clientSecret: process.env.FB_APP_SECRET
 	}
 };

@@ -1,91 +1,9 @@
 const express = require('express');
-const session = require('express-session');
-const bcrypt = require('bcryptjs');
-// const knexSessionStore = require('connect-session-knex')(session);
-const jwt = require('jsonwebtoken');
 const passport = require('passport');
-
-const db = require('./authHelper');
-// const secrets = require('./secrets');
-// const tokenService = require('../auth/tokenService');
-
 const router = express();
 
-// const sessionConfig = {
-// 	name: 'cookie',
-// 	secret: 'secret',
-// 	cookie: {
-// 		httpOnly: true,
-// 		maxAge: 1000 * 60 * 1,
-// 		secure: false
-// 	},
-// 	resave: false,
-// 	saveUninitialized: true,
-// 	store: new knexSessionStore({
-// 		knex: require('../database/dbConfig'),
-// 		createTable: true,
-// 		clearInterval: 1000 * 60 * 15
-// 	})
-// };
-
-// router.use(session(sessionConfig));
-
-// router.post('/register', (req, res) => {
-// 	// console.log(req.body);
-// 	users = req.body;
-// 	const hash = bcrypt.hashSync(users.password, 10);
-// 	users.password = hash;
-
-// 	db
-// 		.add(users)
-// 		.then(user => {
-// 			res.status(200).json(user);
-// 		})
-// 		.catch(err => {
-// 			res.status(500).json(err);
-// 		});
-// });
-
-// router.post('/login', (req, res) => {
-// 	const { email, password } = req.body;
-// 	// console.log(req.body);
-// 	db
-// 		.login({ email })
-// 		.then(user => {
-// 			// console.log(user);
-
-// 			if (user && bcrypt.compareSync(password, user.password)) {
-// 				const token = generateToken(user);
-// 				res.status(200).json({
-// 					message: `Welcome User`,
-// 					token,
-// 					user
-// 				});
-// 			} else {
-// 				res.status(404).json({ message: 'Invalid Login' });
-// 			}
-// 		})
-// 		.catch(err => {
-// 			res.status(500).json({ message: 'Error Logging In' });
-// 		});
-// });
-
-// function generateToken(user) {
-// 	// console.log(user);
-// 	const payload = {
-// 		user: user.id,
-// 		email: user.email
-// 	};
-
-// 	const options = {
-// 		expiresIn: '1h'
-// 	};
-// 	return jwt.sign(payload, secrets.jwtSecret, options);
-// }
-
-// auth login (will change later)
 router.get('/login', (req, res) => {
-	res.render('login', { users: req.user });
+	res.render('login', { users: req.session.user });
 });
 
 // auth with google
@@ -101,7 +19,6 @@ router.get(
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 	console.log('USER', req.user);
 	res.redirect('labs13localchat://login?user=' + JSON.stringify(req.user));
-	// res.redirect('/profile');
 });
 
 router.get(
@@ -113,7 +30,6 @@ router.get(
 		res.redirect(
 			'labs13localchat://login?user=' + JSON.stringify(req.user)
 		);
-		// res.redirect('/profile');
 	}
 );
 
@@ -124,29 +40,41 @@ router.get('/logout', (req, res) => {
 		});
 		req.logOut();
 		req.session.destroy(err => {
-			res.redirect(
-				'labs13localchat://login?user=' + JSON.stringify(req.user)
-			);
-			// if (err) {
-			// 	res.send('error logging out');
-			// } else {
-			// res.clearCookie('connect.sid', {
-			// 	path: '/',
-			// 	httpOnly: true
-			// });
-			// res.redirect('/');
-			// res.send('Logged Out');
-			// }
+			res.redirect('/auth/login');
 		});
 	} else {
 		res.end();
 	}
 });
 
-// router.get('/logout', (req, res) => {
-// 	console.log('Logout Successful');
-// 	req.session = null;
-// 	req.logout();
-// 	res.redirect('/');
-// });
+router.get(
+	'/facebook',
+	passport.authenticate('facebook', {
+		scope: [ 'user_photos', 'email' ]
+	})
+);
+
+router.get(
+	'/facebook/redirect',
+	passport.authenticate('facebook'),
+	(req, res) => {
+		console.log('USER', req.user);
+		res.redirect(
+			'labs13localchat://login?user=' + JSON.stringify(req.user)
+		);
+	}
+);
+
+router.get(
+	'/facebook/callback',
+	passport.authenticate('facebook', {
+		failureRedirect: '/login'
+	}),
+	function(req, res) {
+		res.redirect(
+			'labs13localchat://login?user=' + JSON.stringify(req.user)
+		);
+	}
+);
+
 module.exports = router;
