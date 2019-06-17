@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     tbl.increments();
     tbl.string("name").notNullable();
     tbl.integer("radius").notNullable();
+    tbl.text("description").notNullable();
     tbl
       .integer("user_id")
       .unsigned()

@@ -48,10 +48,17 @@ router.get('/logout', (req, res) => {
 });
 
 router.get(
+<<<<<<< HEAD
 	'/facebook',
 	passport.authenticate('facebook', {
 		scope: [ 'user_photos', 'email' ]
 	})
+=======
+  "/facebook",
+  passport.authenticate("facebook", {
+    scope: ["email"]
+  })
+>>>>>>> 547d82431f7a2623dd699e2d1d7b3d10dff8a418
 );
 
 router.get(
