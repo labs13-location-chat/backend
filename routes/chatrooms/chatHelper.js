@@ -5,7 +5,8 @@ module.exports = {
   findById,
   add,
   remove,
-  update
+  update,
+  addCoords
 };
 
 function find() {
@@ -38,4 +39,9 @@ function update(id, chatroom) {
   return db("chatrooms")
     .where("id", Number(id))
     .update(chatroom);
+}
+
+function addCoords(coords) {
+  return db("location")
+    .insert(coords)
 }
