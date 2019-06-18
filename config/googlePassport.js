@@ -17,17 +17,17 @@ passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  const Users = db("users");
-  Users.where({ id })
-    .first()
-    .then(user => {
-      if (!user) {
-        return done(new Error("User not found" + id));
-      }
-      return done(null, user);
-    });
-});
+// passport.deserializeUser(function(id, done) {
+//   const Users = db("users");
+//   Users.where({ id })
+//     .first()
+//     .then(user => {
+//       // if (!user) {
+//       //   return done(new Error("User not found" + id));
+//       // }
+//       return done(null, user);
+//     });
+// });
 
 passport.use(
   new GoogleStrategy(

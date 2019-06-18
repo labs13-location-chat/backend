@@ -12,7 +12,7 @@ exports.seed = function(knex, Promise) {
           permanent: false,
           total_users: 2,
           description: "A chatroom for Los Angeles, California",
-          chatroom_url: "sendbird_open_channel_52771_86e7888ea74da04c2c221353b90ac8923cb1f98b0"
+          chatroom_url: "sendbird_open_channel_52771_74cbb1034648504d88f2e1ff335cf2c86b3fd767"
         },
         {
           name: "Westerly, RI",
