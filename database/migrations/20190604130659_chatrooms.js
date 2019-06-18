@@ -2,7 +2,9 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("chatrooms", tbl => {
     tbl.increments();
     tbl.string("name").notNullable();
+    tbl.string("chatroom_url").notNullable()
     tbl.integer("radius").notNullable();
+    tbl.text("description").notNullable();
     tbl
       .integer("user_id")
       .unsigned()

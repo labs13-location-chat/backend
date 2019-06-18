@@ -1,21 +1,21 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const secrets = require('../auth/secrets');
+const secrets = require("../auth/secrets");
 
 module.exports = {
-	generateToken
+  generateToken
 };
 
 function generateToken(user) {
-	console.log('Needs a token:', user);
+  console.log("Needs a token:", user);
 
-	const payload = {
-		user: user.id,
-		email: user.email
-	};
-	const options = {
-		expiresIn: '30min'
-	};
+  const payload = {
+    user: user.id,
+    email: user.email
+  };
+  const options = {
+    expiresIn: "30min"
+  };
 
-	return jwt.sign(payload, secrets.jwtSecret, options);
+  return jwt.sign(payload, secrets.jwtSecret, options);
 }
