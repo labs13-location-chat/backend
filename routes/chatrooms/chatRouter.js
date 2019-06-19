@@ -75,4 +75,16 @@ router.put("/:id", (req, res) => {
   }
 });
 
+router.post("/:id/location", async (req, res) => {
+  const id = req.params.id;
+  const location = { ...req.body, chatroom_id: id };
+  try {
+    const coords = await db.addCoords(location);
+    res.status(200).json(coords);
+  }
+  catch (err) {
+    res.status(500).json({ error: "Unable to add" })
+  }
+})
+
 module.exports = router;

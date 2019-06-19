@@ -33,7 +33,8 @@ passport.use(
 		{
 			clientID: keys.google.clientID,
 			clientSecret: keys.google.clientSecret,
-			callbackURL: '/auth/google/redirect'
+			callbackURL:
+				'https://labs13-localchat.herokuapp.com/auth/google/redirect'
 		},
 		async (accessToken, refreshToken, profile, done) => {
 			// console.log('passport callback function fired');
