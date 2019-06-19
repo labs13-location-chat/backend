@@ -1,10 +1,10 @@
 const express = require('express');
 const db = require('./userHelper');
-const restricted = require('../../auth/restrictedMiddleware');
+// const restricted = require('../../auth/restrictedMiddleware');
 
 const router = express();
 
-router.get('/', restricted, (req, res) => {
+router.get('/', (req, res) => {
 	db
 		.find()
 		.then(users => {
@@ -56,11 +56,9 @@ router.put('/:id', (req, res) => {
 				res.status(200).json(users);
 			})
 			.catch(err => {
-				res
-					.status(500)
-					.json({
-						error: 'The user information could not be modified.'
-					});
+				res.status(500).json({
+					error: 'The user information could not be modified.'
+				});
 			});
 	}
 });
