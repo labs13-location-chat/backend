@@ -84,13 +84,13 @@ passport.use(
 		},
 		async (accessToken, refreshToken, profile, done) => {
 			console.log('passport callback function fired');
-			// console.log("profile from facebook", profile);
+			console.log('profile from facebook', profile);
 			const Users = db('users');
 			const existing = await Users.where({
 				email: profile.emails[0].value
 			}).first();
 
-			// console.log("profile", profile);
+			console.log('profile', profile);
 			try {
 				if (existing) {
 					console.log('user exists:', existing);
