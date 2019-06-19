@@ -5,13 +5,13 @@ exports.up = function(knex, Promise) {
 		tbl.string('password');
 		tbl.string('first_name').notNullable();
 		tbl.string('last_name').notNullable();
-		tbl.string('profile_pic');
 		tbl.string('user_type').notNullable();
 		tbl.boolean('anonymous').notNullable();
 		tbl.string('phone_num', 10);
 		tbl.string('facebook_id');
 		tbl.string('google_id');
-		tbl.string('token').notNullable();
+		tbl.string('token');
+		tbl.string('photo');
 	});
 };
 
