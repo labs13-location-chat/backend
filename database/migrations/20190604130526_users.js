@@ -14,6 +14,7 @@ exports.up = function(knex, Promise) {
     tbl.string("facebook_id");
     tbl.string("google_id");
     tbl.string("token");
+    tbl.string("photo");
   });
 };
 
