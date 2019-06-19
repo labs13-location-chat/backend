@@ -59,7 +59,8 @@ passport.use(
 						google_id: profile.id,
 						user_type: 'user',
 						anonymous: true,
-						token: accessToken
+						token: accessToken,
+						photo: profile.name.picture
 					});
 				}
 				const newUser = await Users.where({
