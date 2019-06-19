@@ -13,7 +13,7 @@ exports.up = function(knex, Promise) {
     tbl.string("phone_num", 10);
     tbl.string("facebook_id");
     tbl.string("google_id");
-    tbl.string("token").notNullable();
+    tbl.string("token");
   });
 };
 
