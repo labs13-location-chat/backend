@@ -13,9 +13,14 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get('/locations', async (req, res) => {
+router.get('/locations', (req, res) => {
   db.getLocations()
-  
+    .then(locations => {
+      res.status(200).json(locations)
+    })
+    .catch(err => {
+      res.status(500).json(err)
+    })
 })
 
 router.get("/:id", async (req, res) => {
