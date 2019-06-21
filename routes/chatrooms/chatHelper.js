@@ -6,11 +6,16 @@ module.exports = {
   add,
   remove,
   update,
-  addCoords
+  addCoords,
+  getLocations
 };
 
 function find() {
   return db("chatrooms");
+}
+
+function getLocations() {
+  return db('location')
 }
 
 async function findById(id) {

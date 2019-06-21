@@ -13,6 +13,11 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get('/locations', async (req, res) => {
+  db.getLocations()
+  
+})
+
 router.get("/:id", async (req, res) => {
   try {
     const chatrooms = await db.findById(req.params.id);
