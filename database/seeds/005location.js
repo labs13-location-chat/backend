@@ -17,7 +17,8 @@ exports.seed = function(knex, Promise) {
         { name: 'Fenway Park', longitude: -71.095764, latitude: 42.346268, chatroom_id: 10 },
         { name: 'Boston, MA', longitude: -71.057083, latitude: 42.361145, chatroom_id: 11 },
         { name: 'New York, NY', longitude: -73.935242, latitude: 40.730610, chatroom_id: 12 },
-        { name: 'San Diego, CA', longitude: -117.161087, latitude: 32.715736, chatroom_id: 13 }
+        { name: 'San Diego, CA', longitude: -117.161087, latitude: 32.715736, chatroom_id: 13 },
+        { name: 'General Chat', longitude: -101.249726, latitude: 40.681892, chatroom_id: 14 }
       ]);
     });
 };
