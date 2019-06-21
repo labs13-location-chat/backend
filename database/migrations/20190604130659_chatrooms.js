@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     tbl.string("chatroom_url").notNullable()
     tbl.integer("radius").notNullable();
     tbl.text("description").notNullable();
+    tbl.text("img_url").notNullable()
     tbl
       .integer("user_id")
       .unsigned()
