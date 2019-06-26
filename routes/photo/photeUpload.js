@@ -13,17 +13,20 @@ router.post('/upload', multerUploads, (req, res) => {
 				.status(200)
 				.json({
 					message:
-						'Your image has been uploaded successfully to Cloudinary',
+						'Your photo was uploaded successfully to Cloudinary!',
 					photo: photo
 				})
 				.catch(err =>
-					res.status(400).json({
-						message:
-							'Something went wrong while processing your request',
+					res.status(500).json({
+						message: 'Uexpected error.',
 						err: err
 					})
 				);
 		});
+	} else {
+		res
+			.status(400)
+			.json({ message: 'There was an issue uploading your photo.' });
 	}
 });
 
