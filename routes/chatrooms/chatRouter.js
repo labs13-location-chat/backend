@@ -3,15 +3,38 @@ const db = require("./chatHelper");
 
 const router = express();
 
-router.get("/", (req, res) => {
-  db.find()
-    .then(chatrooms => {
-      res.status(200).json(chatrooms);
+router.get("/", async (req, res) => {
+  try{
+    const chatrooms = await db.find()
+    res.status(200).json(chatrooms);
+  } catch ({message}) {
+    res.status(500).json({message});
+  }
+
+});
+
+router.get('/locations', (req, res) => {
+  db.getLocations()
+    .then(locations => {
+      res.status(200).json(locations)
     })
     .catch(err => {
-      res.status(500).json(err);
-    });
-});
+      res.status(500).json(err)
+    })
+})
+
+router.post("/:id/locations", async (req, res) => {
+  const locationInfo = { ...req.body, chatroom_id: req.params.id}
+
+  try {
+    const loc = await db.addLocation(locationInfo)
+    res.status(200).json(loc)
+  } catch (error) {
+    res.status(500).json({
+      message: "Couldn't add that location"
+    })
+  }
+})
 
 router.get("/:id", async (req, res) => {
   try {

@@ -2,6 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("location", tbl => {
     tbl.float("longitude").notNullable();
     tbl.float("latitude").notNullable();
+    tbl.string("name").notNullable()
     tbl
       .integer("chatroom_id")
       .unsigned()

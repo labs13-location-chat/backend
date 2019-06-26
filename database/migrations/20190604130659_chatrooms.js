@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     tbl.string("chatroom_url").notNullable()
     tbl.integer("radius").notNullable();
     tbl.text("description").notNullable();
+    tbl.text("img_url").notNullable()
     tbl
       .integer("user_id")
       .unsigned()
@@ -15,6 +16,7 @@ exports.up = function(knex, Promise) {
       .onUpdate("CASCADE");
     tbl.boolean("permanent").notNullable();
     tbl.integer("total_users").notNullable();
+    tbl.string("chatroom_type").notNullable()
     tbl.timestamps(true, true);
   });
 };

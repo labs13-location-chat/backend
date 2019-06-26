@@ -6,11 +6,24 @@ module.exports = {
   add,
   remove,
   update,
-  addCoords
+  addCoords,
+  getLocations,
+  addLocation
 };
 
-function find() {
-  return db("chatrooms");
+async function addLocation(location) {
+  const [id] = await db("location").insert(location).insert.where({ id: location.chatroom_id})
+  return findById(id)
+}
+
+async function find() {
+  let chatrooms = await db("chatrooms as cr").join("location as l", "l.chatroom_id", "cr.id")
+
+  return chatrooms
+}
+
+function getLocations() {
+  return db('location')
 }
 
 async function findById(id) {
