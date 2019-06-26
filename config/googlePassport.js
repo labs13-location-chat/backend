@@ -59,8 +59,7 @@ passport.use(
 						user_type: 'user',
 						anonymous: true,
 						token: accessToken,
-						photo:
-							'https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png'
+						photo: profile.photos[0].value
 					});
 				}
 				const newUser = await Users.where({
