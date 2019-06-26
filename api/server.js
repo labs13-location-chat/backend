@@ -5,6 +5,7 @@ const passport = require('passport');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 // const connect = require('connect');
 const keys = require('../auth/keys');
 const userRouter = require('../routes/users/userRouter');
@@ -12,13 +13,14 @@ const authRouter = require('../auth/authRouter');
 const chatRouter = require('../routes/chatrooms/chatRouter');
 const messageRouter = require('../routes/message/messageRouter');
 const profileRoutes = require('../auth/profileRouter');
+const photoUpload = require('../routes/photo/photeUpload');
 const googlePassport = require('../config/googlePassport');
 var twilioToken = require('../routes/twilio/twilioRoute');
 
 const server = express();
 
 // // set view engine
-// server.set("view engine", "ejs");
+// server.set('view engine', 'ejs');
 
 // cookie session -stores cookie in browser
 server.use(
@@ -46,6 +48,7 @@ server.use(passport.session());
 server.use(express.json());
 server.use(helmet());
 server.use(morgan('dev'));
+server.use(bodyParser.json());
 // const corsOptions = {
 //   origin: process.env.BASE_URL,
 //   AccessControlAllowOrigin: [
@@ -56,10 +59,11 @@ server.use(morgan('dev'));
 server.use(cors());
 
 // set up routes for google auth
+
 server.use('/auth', authRouter);
 server.use('/profile', profileRoutes);
-
 server.use('/api/users', userRouter);
+server.use('/api', photoUpload);
 server.use('/api', authRouter);
 server.use('/api/chatrooms', chatRouter);
 server.use('/api/messages', messageRouter);
@@ -69,7 +73,7 @@ server.get('/', (req, res) => {
 	res.send('Server is running...');
 
 	// renders ejs template
-	// res.render("home", { user: req.user });
+	// res.render('home', { user: req.user });
 });
 
 module.exports = server;
