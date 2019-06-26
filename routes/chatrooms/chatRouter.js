@@ -3,14 +3,14 @@ const db = require("./chatHelper");
 
 const router = express();
 
-router.get("/", (req, res) => {
-  db.find()
-    .then(chatrooms => {
-      res.status(200).json(chatrooms);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
+router.get("/", async (req, res) => {
+  try{
+    const chatrooms = await db.find()
+    res.status(200).json(chatrooms);
+  } catch ({message}) {
+    res.status(500).json({message});
+  }
+
 });
 
 router.get('/locations', (req, res) => {

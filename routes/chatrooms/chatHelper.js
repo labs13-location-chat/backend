@@ -16,8 +16,10 @@ async function addLocation(location) {
   return findById(id)
 }
 
-function find() {
-  return db("chatrooms");
+async function find() {
+  let chatrooms = await db("chatrooms as cr").join("location as l", "l.chatroom_id", "cr.id")
+
+  return chatrooms
 }
 
 function getLocations() {
