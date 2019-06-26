@@ -109,7 +109,7 @@ passport.use(
 						user_type: 'user',
 						anonymous: true,
 						token: accessToken,
-						photo: profile.picture
+						photo: profile.photos[0].value
 					});
 				}
 				const newUser = await Users.where({
