@@ -12,9 +12,7 @@ const tokenService = require('../auth/tokenService');
 // invoke a callback with a user object.
 
 passport.serializeUser(function(user, done) {
-	// console.log('User serialized', user.id);
 	console.log('User serialized', user.id);
-
 	done(null, user.id);
 });
 
@@ -38,8 +36,9 @@ passport.use(
 		},
 		async (accessToken, refreshToken, profile, done) => {
 			// console.log('passport callback function fired');
-
+			// console.log('google photo:', profile.photos[0].value);
 			const Users = db('users');
+
 			const existing = await Users.where({
 				email: profile.emails[0].value
 			}).first();
@@ -60,7 +59,8 @@ passport.use(
 						user_type: 'user',
 						anonymous: true,
 						token: accessToken,
-						photo: profile.name.picture
+						photo:
+							'https://www.qualiscare.com/wp-content/uploads/2017/08/default-user.png'
 					});
 				}
 				const newUser = await Users.where({
@@ -109,7 +109,8 @@ passport.use(
 						facebook_id: profile.id,
 						user_type: 'user',
 						anonymous: true,
-						token: accessToken
+						token: accessToken,
+						photo: profile.picture
 					});
 				}
 				const newUser = await Users.where({
