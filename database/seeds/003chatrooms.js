@@ -178,7 +178,7 @@ exports.seed = function(knex, Promise) {
           total_users: 3,
           description: "A chatroom for East Beach in Westerly, Rhode Island",
           chatroom_url: "sendbird_open_channel_52771_03419f5e356e0cbef3ed2ca228c97c82bb018414",
-          chatroom_type: "town",
+          chatroom_type: "beach",
           img_url: "https://sendbird.com/main/img/cover/cover_07.jpg"
         }
         
