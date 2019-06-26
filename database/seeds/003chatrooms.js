@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
           total_users: 3,
           description: "A chatroom for Westerly, Rhode Island",
           chatroom_url: "sendbird_open_channel_52771_bb3423f848cba53c24d267146acc278808136b21",
-          chatroom_type: "big city",
+          chatroom_type: "town",
           img_url: "https://sendbird.com/main/img/cover/cover_02.jpg"
         },
         {
@@ -158,6 +158,28 @@ exports.seed = function(knex, Promise) {
           chatroom_url: "sendbird_open_channel_52771_f69e5cfb8ea5204ea44f8088059bcb45dab82f13",
           chatroom_type: "worldwide",
           img_url: "https://sendbird.com/main/img/cover/cover_05.jpg"
+        },
+        {
+          name: "Providence, RI",
+          radius: 10,
+          user_id: 2,
+          permanent: true,
+          total_users: 3,
+          description: "A chatroom for Providence, Rhode Island",
+          chatroom_url: "sendbird_open_channel_52771_9b798539b4dad0f9d953c6eac40f5d29af1328a3",
+          chatroom_type: "town",
+          img_url: "https://sendbird.com/main/img/cover/cover_06.jpg"
+        },
+        {
+          name: "East Beach, Westerly, RI",
+          radius: 10,
+          user_id: 2,
+          permanent: true,
+          total_users: 3,
+          description: "A chatroom for East Beach in Westerly, Rhode Island",
+          chatroom_url: "sendbird_open_channel_52771_03419f5e356e0cbef3ed2ca228c97c82bb018414",
+          chatroom_type: "town",
+          img_url: "https://sendbird.com/main/img/cover/cover_07.jpg"
         }
         
 
