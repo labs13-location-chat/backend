@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     tbl.increments();
     tbl.string("name").notNullable();
     tbl.string("chatroom_url").notNullable()
-    tbl.integer("radius").notNullable();
+    
     tbl.text("description").notNullable();
     tbl.text("img_url").notNullable()
     tbl
@@ -15,8 +15,10 @@ exports.up = function(knex, Promise) {
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
     tbl.boolean("permanent").notNullable();
-    tbl.integer("total_users").notNullable();
+    
     tbl.string("chatroom_type").notNullable()
+    tbl.float("longitude").notNullable();
+    tbl.float("latitude").notNullable();
     tbl.timestamps(true, true);
   });
 };
