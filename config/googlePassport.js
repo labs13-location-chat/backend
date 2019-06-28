@@ -53,7 +53,7 @@ passport.use(
 					done(null, existing);
 				} else {
 					console.log("user doesnt exist", profile, existing)
-					try {
+					// try {
 						await Users.insert({
 						first_name: profile.name.givenName,
 						last_name: profile.name.familyName,
@@ -71,12 +71,12 @@ passport.use(
 					});
 					// console.log('new user add', newUser);
 					done(null, newUser);
-					} catch ({message}) {
-						console.log("MESSAGE", message)
-						// res.status(500).json({
-						// 	message
-						// })
-					}
+					// } catch ({message}) {
+					// 	console.log("MESSAGE", message)
+					// 	// res.status(500).json({
+					// 	// 	message
+					// 	// })
+					// }
 
 					
 				}
