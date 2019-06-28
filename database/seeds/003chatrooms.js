@@ -254,7 +254,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Phoenix, AZ",
           chatroom_url: "phoenix",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_05jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_05.jpg",
           longitude: -112.074036,
           latitude: 33.448376
         },
@@ -265,7 +265,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for San Antonio, TX",
           chatroom_url: "san_antonio",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_06jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_06.jpg",
           longitude: -98.491142,
           latitude: 29.424349
         },
@@ -276,7 +276,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for San Jose, CA",
           chatroom_url: "san_jose",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_07jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_07.jpg",
           longitude: -121.893028,
           latitude: 37.335480
         },
@@ -287,7 +287,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Jacksonville, FL",
           chatroom_url: "jacksonville",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_08jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_08.jpg",
           longitude: -81.655647,
           latitude: 30.332184
         },
@@ -298,7 +298,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Indianapolis, IN",
           chatroom_url: "indy",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_09jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_09.jpg",
           longitude: -86.120999516,
           latitude: 39.802830122
         },
@@ -309,7 +309,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Columbus, OH",
           chatroom_url: "columbus",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_01jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_01.jpg",
           longitude: -82.99879,
           latitude: 39.96118
         },
@@ -320,7 +320,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Charlotte, NC",
           chatroom_url: "charlotte",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_02jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_02.jpg",
           longitude: -80.843124,
           latitude: 35.227085
         },
@@ -331,7 +331,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for El Paso, TX",
           chatroom_url: "el_paso",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_03jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_03.jpg",
           longitude: -80.843124,
           latitude: 35.227085
         },
@@ -342,7 +342,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Seattle, WA",
           chatroom_url: "seattle",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_04jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_04.jpg",
           longitude: -122.335167,
           latitude: 47.608013
         },
@@ -353,7 +353,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Washington, DC",
           chatroom_url: "wash_dc",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_05jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_05.jpg",
           longitude: 	-77.009003,
           latitude: 38.889931
         },
@@ -364,7 +364,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Memphis, TN",
           chatroom_url: "memphis",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_06jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_06.jpg",
           longitude: -89.969329456,
           latitude: 35.117166198
         },
@@ -375,7 +375,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Nashville, TN",
           chatroom_url: "nashville",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_07jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_07.jpg",
           longitude: -86.767960,
           latitude: 36.174465
         },
@@ -386,7 +386,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Baltimore, MD",
           chatroom_url: "baltimore",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_08jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_08.jpg",
           longitude: -76.609383,
           latitude: 39.299236
         },
@@ -397,7 +397,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Oklahoma City, OK",
           chatroom_url: "oklahoma_city",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_09jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_09.jpg",
           longitude: -97.508469,
           latitude: 35.481918
         },
@@ -408,7 +408,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Portland, OR",
           chatroom_url: "portland_or",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_01jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_01.jpg",
           longitude: -122.676483,
           latitude: 45.523064
         },
@@ -419,7 +419,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Las Vegas, NV",
           chatroom_url: "las_vegas",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_02jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_02.jpg",
           longitude: 	-115.172813,
           latitude: 36.114647
         },
@@ -430,7 +430,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Louisville, KY",
           chatroom_url: "louisville",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_03jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_03.jpg",
           longitude: 	-85.764771,
           latitude: 38.328732
         },
@@ -441,7 +441,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Milwaukee, WI",
           chatroom_url: "milwaukee",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_04jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_04.jpg",
           longitude: 	-87.906471,
           latitude: 43.038902
         },
@@ -452,7 +452,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Albuquerque, NM",
           chatroom_url: "albuquerque",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_05jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_05.jpg",
           longitude: 	-106.629181,
           latitude: 35.106766
         },
@@ -463,7 +463,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Tucson, AZ",
           chatroom_url: "tucson",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_06jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_06.jpg",
           longitude: 	-110.911789,
           latitude: 32.253460
         },
@@ -474,7 +474,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Fresno, CA",
           chatroom_url: "fresno",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_07jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_07.jpg",
           longitude: 	-119.772591,
           latitude: 36.746841
         },
@@ -485,7 +485,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Sacramento, CA",
           chatroom_url: "sacramento",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_08jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_08.jpg",
           longitude: 	-121.478851,
           latitude: 38.575764
         },
@@ -496,7 +496,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Long Beach, CA",
           chatroom_url: "long_beach",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_09jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_09.jpg",
           longitude: 	-118.193741,
           latitude: 33.770050
         },
@@ -507,7 +507,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Kansas City, MO",
           chatroom_url: "kansas_city_mo",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_01jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_01.jpg",
           longitude: 	-94.581078,
           latitude: 39.110298
         },
@@ -518,7 +518,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Mesa, AZ",
           chatroom_url: "mesa",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_02jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_02.jpg",
           longitude: 	-111.833267,
           latitude: 33.424564
         },
@@ -529,7 +529,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Virginia Beach, VA",
           chatroom_url: "virginia_beach",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_03jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_03.jpg",
           longitude: 	-76.015778,
           latitude: 36.863140
         },
@@ -540,7 +540,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Omaha, NE",
           chatroom_url: "omaha",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_04jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_04.jpg",
           longitude: 	-95.995102,
           latitude: 41.257160
         },
@@ -551,7 +551,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Colorado Springs, CO",
           chatroom_url: "co_springs",
           chatroom_type: "town",
-          img_url: "https://sendbird.com/main/img/cover/cover_05jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_05.jpg",
           longitude: 	-104.800644,
           latitude: 38.846127
         },
@@ -562,7 +562,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Raleigh, NC",
           chatroom_url: "raleigh",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_06jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_06.jpg",
           longitude: 	-78.644257,
           latitude: 35.787743
         },
@@ -573,7 +573,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Minneapolis, MN",
           chatroom_url: "minneapolis",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_07jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_07.jpg",
           longitude: 	-93.258133,
           latitude: 44.986656
         },
@@ -584,7 +584,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Tulsa, OK",
           chatroom_url: "tulsa",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_08jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_08.jpg",
           longitude: 	-95.992775,
           latitude: 36.153980
         },
@@ -595,7 +595,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Cleveland, OH",
           chatroom_url: "cleveland",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_09jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_09.jpg",
           longitude: 	-81.681290,
           latitude: 41.505493
         },
@@ -606,7 +606,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for New Orleans, LA",
           chatroom_url: "new_orleans",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_01jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_01.jpg",
           longitude: 	-90.071533,
           latitude: 29.951065
         },
@@ -617,7 +617,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Wichita, KS",
           chatroom_url: "wichita",
           chatroom_type: "big city",
-          img_url: "https://sendbird.com/main/img/cover/cover_02jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_02.jpg",
           longitude: 	-97.314835,
           latitude: 37.697948
         },
@@ -628,7 +628,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Jackson Hole, WY",
           chatroom_url: "jackson_hole",
           chatroom_type: "rural city",
-          img_url: "https://sendbird.com/main/img/cover/cover_03jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_03.jpg",
           longitude: 	-110.83333,
           latitude: 43.5166646
         },
@@ -639,7 +639,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Helena, MT",
           chatroom_url: "helena",
           chatroom_type: "rural city",
-          img_url: "https://sendbird.com/main/img/cover/cover_03jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_03.jpg",
           longitude: 	-112.534775,
           latitude: 46.003822
         },
@@ -650,7 +650,7 @@ exports.seed = function(knex, Promise) {
           description: "A chatroom for Boise, ID",
           chatroom_url: "boise",
           chatroom_type: "rural city",
-          img_url: "https://sendbird.com/main/img/cover/cover_03jpg",
+          img_url: "https://sendbird.com/main/img/cover/cover_03.jpg",
           longitude: 	-116.215019,
           latitude: 43.618881
         },
