@@ -20,17 +20,7 @@ passport.deserializeUser(function(id, done) {
 	const Users = db('users');
 	Users.where({ id }).first().then(user => {
 		if (!user) {
-			return Users.insert({
-				first_name: profile.name.givenName,
-				last_name: profile.name.familyName,
-				email: profile.emails[0].value,
-				google_id: profile.id,
-				user_type: 'user',
-				anonymous: true,
-				token: accessToken,
-				photo: profile.photos[0].value
-			});
-			// done(new Error('User not found' + id));
+			return done(new Error('User not found' + id));
 		}
 		return done(null, user);
 	});
