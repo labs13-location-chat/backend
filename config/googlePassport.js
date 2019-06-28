@@ -68,7 +68,7 @@ passport.use(
 							phone_num: 123451612
 						});
 					} catch (error) {
-						console.error("catch error from second try catch", error.message)
+						console.log("catch error from second try catch", error.message)
 					}
 				}
 				const newUser = await Users.where({
