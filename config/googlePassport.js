@@ -11,19 +11,19 @@ const tokenService = require('../auth/tokenService');
 // credentials (in this case, a token, tokenSecret, and Google profile), and
 // invoke a callback with a user object.
 
-passport.serializeUser(function(user, done) {
-	console.log('User serialized', user.id);
-	done(null, user.id);
+passport.serializeUser(function(users, done) {
+	console.log('User serialized', users.id);
+	done(null, users.id);
 });
 
 passport.deserializeUser(function(id, done) {
 	const Users = db('users');
-	Users.where({ id }).first().then(user => {
-		if (!user) {
-			return done(user, null);
+	Users.where({ id }).first().then(users => {
+		if (!users) {
+			return done(users, null);
 				// new Error('User not found' + id)
 		}
-		return done(null, user);
+		return done(null, users);
 	});
 });
 
