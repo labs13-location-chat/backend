@@ -13,7 +13,7 @@ const tokenService = require('../auth/tokenService');
 
 passport.serializeUser(function(user, done) {
 	console.log('User serialized', user.id);
-	done(null, user);
+	done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {
