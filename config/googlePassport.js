@@ -66,6 +66,11 @@ passport.use(
 						password: null,
 						phone_num: 123451612
 					});
+					const newUser = await Users.where({
+						email: profile.emails[0].value
+					});
+					// console.log('new user add', newUser);
+					done(null, newUser);
 					} catch ({message}) {
 						console.log("MESSAGE", message)
 						// res.status(500).json({
@@ -75,11 +80,6 @@ passport.use(
 
 					
 				}
-				const newUser = await Users.where({
-					email: profile.emails[0].value
-				});
-				// console.log('new user add', newUser);
-				// done(null, newUser);
 			
 		}
 	)
