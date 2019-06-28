@@ -45,14 +45,14 @@ passport.use(
 			}).first();
 			
 				if (existing) {
-					console.log('user exists:', existing);
+					console.log('user exists:', existing, profile);
 					// let accessToken = tokenService.generateToken(
 					// 	existing.email
 					// );
 					// existing.token = accessToken;
 					// done(null, existing);
 				} else {
-					console.log("user doesnt exist", profile)
+					console.log("user doesnt exist", profile, existing)
 					try {
 						await Users.insert({
 						first_name: profile.name.givenName,
