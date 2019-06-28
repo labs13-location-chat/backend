@@ -71,7 +71,7 @@ passport.use(
 				// console.log('new user add', newUser);
 				done(null, newUser);
 			} catch (err) {
-				console.error(err.message);
+				console.error("catch error from passport", err.message);
 			}
 		}
 	)
