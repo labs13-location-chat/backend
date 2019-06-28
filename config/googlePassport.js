@@ -20,7 +20,8 @@ passport.deserializeUser(function(id, done) {
 	const Users = db('users');
 	Users.where({ id }).first().then(user => {
 		if (!user) {
-			return done(new Error('User not found' + id));
+			return done(user, null);
+				// new Error('User not found' + id)
 		}
 		return done(null, user);
 	});
@@ -59,7 +60,9 @@ passport.use(
 						user_type: 'user',
 						anonymous: true,
 						token: accessToken,
-						photo: profile.photos[0].value
+						photo: profile.photos[0].value,
+						password: null,
+						phone_num: 123451612
 					});
 				}
 				const newUser = await Users.where({
