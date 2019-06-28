@@ -43,7 +43,7 @@ server.use(
 );
 
 // initialize passport
-server.use(passport.initialize());
+// server.use(passport.initialize());
 // server.use(passport.session());
 server.use(express.json());
 server.use(helmet());
