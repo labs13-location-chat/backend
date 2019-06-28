@@ -43,7 +43,7 @@ passport.use(
 			const existing = await Users.where({
 				email: profile.emails[0].value
 			}).first();
-			try {
+			
 				if (existing) {
 					console.log('user exists:', existing);
 					// let accessToken = tokenService.generateToken(
@@ -78,10 +78,8 @@ passport.use(
 					email: profile.emails[0].value
 				});
 				// console.log('new user add', newUser);
-				done(null, newUser);
-			} catch (err) {
-				console.log("catch error from passo", err.message);
-			}
+				// done(null, newUser);
+			
 		}
 	)
 );
