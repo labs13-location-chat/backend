@@ -44,7 +44,7 @@ server.use(
 
 // initialize passport
 server.use(passport.initialize());
-server.use(passport.session());
+// server.use(passport.session());
 server.use(express.json());
 server.use(helmet());
 server.use(morgan('dev'));
