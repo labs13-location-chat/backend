@@ -67,9 +67,10 @@ passport.use(
 						phone_num: 123451612
 					});
 					} catch ({message}) {
-						res.status(500).json({
-							message
-						})
+						console.log("MESSAGE", message)
+						// res.status(500).json({
+						// 	message
+						// })
 					}
 
 					
