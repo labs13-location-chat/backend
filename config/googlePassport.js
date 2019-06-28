@@ -53,18 +53,26 @@ passport.use(
 					// done(null, existing);
 				} else {
 					console.log("user doesnt exist")
-					// await Users.insert({
-					// 	first_name: profile.name.givenName,
-					// 	last_name: profile.name.familyName,
-					// 	email: profile.emails[0].value,
-					// 	google_id: profile.id,
-					// 	user_type: 'user',
-					// 	anonymous: true,
-					// 	token: accessToken,
-					// 	photo: profile.photos[0].value,
-					// 	password: null,
-					// 	phone_num: 123451612
-					// });
+					try {
+						await Users.insert({
+						first_name: profile.name.givenName,
+						last_name: profile.name.familyName,
+						email: profile.emails[0].value,
+						google_id: profile.id,
+						user_type: 'user',
+						anonymous: true,
+						token: accessToken,
+						photo: profile.photos[0].value,
+						password: null,
+						phone_num: 123451612
+					});
+					} catch ({message}) {
+						res.status(500).json({
+							message
+						})
+					}
+
+					
 				}
 				const newUser = await Users.where({
 					email: profile.emails[0].value
