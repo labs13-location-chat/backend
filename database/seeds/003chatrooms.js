@@ -627,7 +627,7 @@ exports.seed = function(knex, Promise) {
           permanent: true,
           description: "A chatroom for Jackson Hole, WY",
           chatroom_url: "jackson_hole",
-          chatroom_type: "big city",
+          chatroom_type: "rural city",
           img_url: "https://sendbird.com/main/img/cover/cover_03jpg",
           longitude: 	-110.83333,
           latitude: 43.5166646
