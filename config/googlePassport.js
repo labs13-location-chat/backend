@@ -26,7 +26,7 @@ passport.deserializeUser(function(id, done) {
 		return done(null, user);
 	});
 });
-// IF STATEMENTS FOR TRY CATCH
+
 passport.use(
 	new GoogleStrategy(
 		{
@@ -43,40 +43,37 @@ passport.use(
 			const existing = await Users.where({
 				email: profile.emails[0].value
 			}).first();
-			if (existing) {
-				try {
-					// console.log('user exists:', existing);
-					let accessToken = tokenService.generateToken(
-						existing.email
-					);
-					existing.token = accessToken;
-					done(null, existing);
-				} catch (error) {
-					console.log("first try if existing true", error.message)
-				}} else {
-					try {
-						await Users.insert({
-							first_name: profile.name.givenName,
-							last_name: profile.name.familyName,
-							email: profile.emails[0].value,
-							google_id: profile.id,
-							user_type: 'user',
-							anonymous: true,
-							token: accessToken,
-							photo: profile.photos[0].value,
-							password: null,
-							phone_num: 123451612
-						});
-					} catch (error) {
-						console.log("catch error from second try catch", error.message)
-					}
+			try {
+				if (existing) {
+					console.log('user exists:', existing);
+					// let accessToken = tokenService.generateToken(
+					// 	existing.email
+					// );
+					// existing.token = accessToken;
+					// done(null, existing);
+				} else {
+					console.log("user doesnt exist")
+					// await Users.insert({
+					// 	first_name: profile.name.givenName,
+					// 	last_name: profile.name.familyName,
+					// 	email: profile.emails[0].value,
+					// 	google_id: profile.id,
+					// 	user_type: 'user',
+					// 	anonymous: true,
+					// 	token: accessToken,
+					// 	photo: profile.photos[0].value,
+					// 	password: null,
+					// 	phone_num: 123451612
+					// });
 				}
 				const newUser = await Users.where({
 					email: profile.emails[0].value
 				});
 				// console.log('new user add', newUser);
 				done(null, newUser);
-			
+			} catch (err) {
+				console.log("catch error from passo", err.message);
+			}
 		}
 	)
 );
