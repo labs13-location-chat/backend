@@ -20,8 +20,7 @@ passport.deserializeUser(function(id, done) {
 	const Users = db('users');
 	Users.where({ id }).first().then(user => {
 		if (!user) {
-			return done(user, null);
-				// new Error('User not found' + id)
+			return done(new Error('User not found' + id));
 		}
 		return done(null, user);
 	});
@@ -43,18 +42,16 @@ passport.use(
 			const existing = await Users.where({
 				email: profile.emails[0].value
 			}).first();
-			
+			try {
 				if (existing) {
-					console.log('user exists:', existing, profile);
+					// console.log('user exists:', existing);
 					let accessToken = tokenService.generateToken(
 						existing.email
 					);
 					existing.token = accessToken;
 					done(null, existing);
 				} else {
-					console.log("user doesnt exist", profile, existing)
-					// try {
-						await Users.insert({
+					await Users.insert({
 						first_name: profile.name.givenName,
 						last_name: profile.name.familyName,
 						email: profile.emails[0].value,
@@ -62,25 +59,17 @@ passport.use(
 						user_type: 'user',
 						anonymous: true,
 						token: accessToken,
-						photo: profile.photos[0].value,
-						password: null,
-						phone_num: 123451612
+						photo: profile.photos[0].value
 					});
-					const newUser = await Users.where({
-						email: profile.emails[0].value
-					});
-					// console.log('new user add', newUser);
-					done(null, newUser);
-					// } catch ({message}) {
-					// 	console.log("MESSAGE", message)
-					// 	// res.status(500).json({
-					// 	// 	message
-					// 	// })
-					// }
-
-					
 				}
-			
+				const newUser = await Users.where({
+					email: profile.emails[0].value
+				});
+				// console.log('new user add', newUser);
+				done(null, newUser);
+			} catch (err) {
+				console.error(err.message);
+			}
 		}
 	)
 );
@@ -121,13 +110,13 @@ passport.use(
 						anonymous: true,
 						token: accessToken,
 						photo: profile.photos[0].value
-					})
-					const newUser = await Users.where({
-						email: profile.emails[0].value
 					});
-					// console.log('new user add', newUser);
-					done(null, newUser);
 				}
+				const newUser = await Users.where({
+					email: profile.emails[0].value
+				});
+				// console.log('new user add', newUser);
+				done(null, newUser);
 			} catch (err) {
 				console.error(err.message);
 			}

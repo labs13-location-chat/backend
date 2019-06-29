@@ -16,7 +16,7 @@ router.get(
 
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+router.get('/google/redirect', passport.authenticate('google', {failureFlash: 'redirect'}), (req, res) => {
 	console.log('USER', req.user);
 	res.redirect('labs13localchat://login?user=' + JSON.stringify(req.user));
 });
@@ -24,7 +24,8 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 router.get(
 	'/google/callback',
 	passport.authenticate('google', {
-		failureRedirect: '/login'
+		failureRedirect: '/login',
+		failureFlash: 'callback'
 	}),
 	function(req, res) {
 		res.redirect(
