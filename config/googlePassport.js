@@ -54,6 +54,7 @@ passport.use(
 					existing.token = accessToken;
 					done(null, existing);
 				} else {
+					const newUser = 
 					await Users.insert({
 						first_name: profile.name.givenName,
 						last_name: profile.name.familyName,
@@ -64,9 +65,9 @@ passport.use(
 						token: accessToken,
 						photo: profile.photos[0].value
 					});
-					const newUser = await Users.where({
-						email: profile.emails[0].value
-					});
+					// const newUser = await Users.where({
+					// 	email: profile.emails[0].value
+					// });
 					console.log('new user add', newUser);
 					done(null, newUser);
 				}
