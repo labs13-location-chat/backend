@@ -44,7 +44,7 @@ passport.use(
 			}).first();
 			try {
 				if (existing) {
-					// console.log('user exists:', existing);
+					console.log('user exists:', existing);
 					let accessToken = tokenService.generateToken(
 						existing.email
 					);
@@ -61,12 +61,12 @@ passport.use(
 						token: accessToken,
 						photo: profile.photos[0].value
 					});
+					const newUser = await Users.where({
+						email: profile.emails[0].value
+					});
+					console.log('new user add', newUser);
+					done(null, newUser);
 				}
-				const newUser = await Users.where({
-					email: profile.emails[0].value
-				});
-				// console.log('new user add', newUser);
-				done(null, newUser);
 			} catch (err) {
 				console.error(err.message);
 			}
