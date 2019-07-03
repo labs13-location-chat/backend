@@ -18,12 +18,15 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
 	const Users = db('users');
-	Users.where({ id }).first().then(user => {
-		if (!user) {
-			return done(new Error('User not found' + id));
-		}
-		return done(null, user);
-	});
+	// Users.where({ id }).first().then(user => {
+	// 	if (!user) {
+	// 		return done(new Error('User not found' + id));
+	// 	}
+	// 	return done(null, user);
+	// });
+	Users.where({ id }).first()(id, function(err, user) {
+		done(err, user);
+	})
 });
 
 passport.use(
