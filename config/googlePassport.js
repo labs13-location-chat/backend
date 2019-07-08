@@ -16,9 +16,9 @@ passport.serializeUser(function(user, done) {
 	done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(async function(id, done) {
 	const Users = db('users');
-	Users.where({ id }).first().then(user => {
+	await Users.findById({id}).then(user => {
 		if (!user) {
 			return done(user, null);
 				// new Error('User not found' + id)
