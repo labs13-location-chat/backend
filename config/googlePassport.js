@@ -16,17 +16,15 @@ passport.serializeUser(function(user, done) {
 	done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(async function(id, done) {
 	const Users = db('users');
-	// Users.where({ id }).first().then(user => {
-	// 	if (!user) {
-	// 		return done(new Error('User not found' + id));
-	// 	}
-	// 	return done(null, user);
-	// });
-	Users.where({ id }).first()(id, function(err, user) {
-		done(err, user);
-	})
+	await Users.findById({id}).then(user => {
+		if (!user) {
+			return done(user, null);
+				// new Error('User not found' + id)
+		}
+		return done(null, user);
+	});
 });
 
 passport.use(
