@@ -12,7 +12,7 @@ function find() {
 }
 
 function findById(id) {
-  return db("users").where({ id });
+  return db("users").where({ id }).returning('id');
 }
 
 function update(id, event) {
