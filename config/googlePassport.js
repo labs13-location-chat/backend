@@ -41,7 +41,7 @@ passport.use(
 		async (accessToken, refreshToken, profile, done) => {
 			// console.log('passport callback function fired');
 			// console.log('google photo:', profile.photos[0].value);
-			const Users = db('users');
+			
 
 			const existing = await Users.where({
 				email: profile.emails[0].value
@@ -56,7 +56,7 @@ passport.use(
 					done(null, existing);
 				} else {
 					const newUser = 
-					await Users.insert({
+					await db('users').insert({
 						first_name: profile.name.givenName,
 						last_name: profile.name.familyName,
 						email: profile.emails[0].value,
@@ -65,7 +65,7 @@ passport.use(
 						anonymous: true,
 						token: accessToken,
 						photo: profile.photos[0].value
-					});
+					}).returning('id');
 					// const newUser = await Users.where({
 					// 	email: profile.emails[0].value
 					// });
