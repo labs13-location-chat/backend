@@ -98,8 +98,7 @@ passport.use(
 		async (accessToken, refreshToken, profile, done) => {
 			console.log('passport callback function fired');
 			console.log('profile from facebook', profile);
-			const Users = db('users');
-			const existing = await Users.where({
+			const existing = await uH.find().where({
 				email: profile.emails[0].value
 			}).first();
 
@@ -114,7 +113,7 @@ passport.use(
 					existing.token = accessToken;
 					done(null, existing);
 				} else {
-					await Users.insert({
+					const newUser = {
 						first_name: profile.name.givenName,
 						last_name: profile.name.familyName,
 						email: profile.emails[0].value,
@@ -123,13 +122,14 @@ passport.use(
 						anonymous: true,
 						token: accessToken,
 						photo: profile.photos[0].value
-					});
+					};
+					let addedUser = await uH.add(newUser);
+					// const newUser = await Users.where({
+					// 	email: profile.emails[0].value
+					// });
+					console.log('new user add', addedUser);
+					done(null, addedUser);
 				}
-				const newUser = await Users.where({
-					email: profile.emails[0].value
-				});
-				// console.log('new user add', newUser);
-				done(null, newUser);
 			} catch (err) {
 				console.error(err.message);
 			}
