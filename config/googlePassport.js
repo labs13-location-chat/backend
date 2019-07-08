@@ -60,8 +60,8 @@ passport.use(
 					existing.token = accessToken;
 					done(null, existing);
 				} else {
-					const newUser = 
-					await uH.add({
+					console.log("profile", profile)
+					const newUser = {
 						first_name: profile.name.givenName,
 						last_name: profile.name.familyName,
 						email: profile.emails[0].value,
@@ -70,12 +70,13 @@ passport.use(
 						anonymous: true,
 						token: accessToken,
 						photo: profile.photos[0].value
-					});
+					}
+					let addedUser = await uH.add(newUser);
 					// const newUser = await Users.where({
 					// 	email: profile.emails[0].value
 					// });
-					console.log('new user add', newUser);
-					done(null, newUser);
+					console.log('new user add', addedUser);
+					done(null, addedUser);
 				}
 			} catch (err) {
 				console.error(err.message);
