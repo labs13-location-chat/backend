@@ -12,7 +12,7 @@ const tokenService = require('../auth/tokenService');
 // invoke a callback with a user object.
 
 passport.serializeUser(function(user, done) {
-	console.log('User serialized', user.id);
+	console.log('User serialized', user.id, "user", user);
 	done(null, user.id);
 });
 
