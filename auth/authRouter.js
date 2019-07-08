@@ -19,7 +19,7 @@ router.get(
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 	// console.log('USER', req.user,'req', res);
-	res.redirect('labs13localchat://login?user=' + req.user);
+	res.redirect('labs13localchat://login?user=' + JSON.stringify(req.user));
 });
 
 router.get(
@@ -29,7 +29,7 @@ router.get(
 	}),
 	function(req, res) {
 		res.redirect(
-			'labs13localchat://login?user=' + req.user
+			'labs13localchat://login?user=' + JSON.stringify(req.user)
 		);
 	}
 );
