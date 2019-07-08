@@ -17,16 +17,14 @@ router.get(
 
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
-router.get('/google/redirect', passport.authenticate('google', { session: false }
-), (req, res) => {
+router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
 	// console.log('USER', req.user,'req', res);
 	res.redirect('labs13localchat://login?user=' + req.user);
 });
 
 router.get(
 	'/google/callback',
-	passport.authenticate('google', { session: false }
-,	{
+	passport.authenticate('google',	{
 		failureRedirect: '/login'
 	}),
 	function(req, res) {
