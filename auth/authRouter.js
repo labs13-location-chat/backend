@@ -3,7 +3,8 @@ const passport = require('passport');
 const router = express();
 
 router.get('/login', (req, res) => {
-	res.render('login', { users: req.session.user });
+	console.log()
+	res.render('login', { users: req.user });
 });
 
 // auth with google
