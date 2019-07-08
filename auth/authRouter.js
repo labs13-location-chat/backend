@@ -10,21 +10,23 @@ router.get('/login', (req, res) => {
 // auth with google
 router.get(
 	'/google',
-	passport.authenticate('google', {
+	passport.authenticate('google', { session: false }, {
 		scope: [ 'profile', 'email' ]
 	})
 );
 
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+router.get('/google/redirect', passport.authenticate('google', { session: false }
+), (req, res) => {
 	// console.log('USER', req.user,'req', res);
 	res.redirect('labs13localchat://login?user=' + req.user);
 });
 
 router.get(
 	'/google/callback',
-	passport.authenticate('google', {
+	passport.authenticate('google', { session: false }
+,	{
 		failureRedirect: '/login'
 	}),
 	function(req, res) {
