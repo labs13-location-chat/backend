@@ -19,12 +19,13 @@ passport.serializeUser(function(user, done) {
 
 
 
-passport.deserializeUser(function(id, done) {
-	const Users = db('users');
-	Users.where({id}).then(user => {
+passport.deserializeUser(async function(id, done) {
+	// const Users = db('users');
+	console.log("DESERIALIZE", id, "user123:", user)
+	await db('users').where({id}).then(user => {
 		if (!user) {
 			return done(user, null);
-				// new Error('User not found' + id)
+				new Error('User not found' + id)
 		}
 		return done(null, user);
 	});
@@ -65,7 +66,7 @@ passport.use(
 						anonymous: true,
 						token: accessToken,
 						photo: profile.photos[0].value
-					}).returning(id);
+					}).returning('id');
 					// const newUser = await Users.where({
 					// 	email: profile.emails[0].value
 					// });
