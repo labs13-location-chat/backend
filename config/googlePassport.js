@@ -65,7 +65,7 @@ passport.use(
 						anonymous: true,
 						token: accessToken,
 						photo: profile.photos[0].value
-					}).returning('id');
+					}).returning(id);
 					// const newUser = await Users.where({
 					// 	email: profile.emails[0].value
 					// });
