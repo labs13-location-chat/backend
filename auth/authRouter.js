@@ -3,7 +3,7 @@ const passport = require('passport');
 const router = express();
 
 router.get('/login', (req, res) => {
-	console.log()
+	console.log("REQUEST from /login route!!", req)
 	res.render('login', { users: req.user });
 });
 
