@@ -5,11 +5,25 @@ module.exports = {
   findById,
   add,
   remove,
-  update
+  update,
+  addCoords,
+  getLocations,
+  addLocation
 };
 
-function find() {
-  return db("chatrooms");
+async function addLocation(location) {
+  const [id] = await db("location").insert(location).insert.where({ id: location.chatroom_id})
+  return findById(id)
+}
+
+async function find() {
+  // let chatrooms = await db("chatrooms as cr").join("location as l", "l.chatroom_id", "cr.id")
+
+  return db("chatrooms")
+}
+
+function getLocations() {
+  return db('location')
 }
 
 async function findById(id) {
@@ -38,4 +52,9 @@ function update(id, chatroom) {
   return db("chatrooms")
     .where("id", Number(id))
     .update(chatroom);
+}
+
+function addCoords(coords) {
+  return db("location")
+    .insert(coords)
 }

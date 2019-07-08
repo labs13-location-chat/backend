@@ -2,8 +2,10 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable("chatrooms", tbl => {
     tbl.increments();
     tbl.string("name").notNullable();
-    tbl.integer("radius").notNullable();
+    tbl.string("chatroom_url").notNullable()
+    
     tbl.text("description").notNullable();
+    tbl.text("img_url").notNullable()
     tbl
       .integer("user_id")
       .unsigned()
@@ -13,7 +15,10 @@ exports.up = function(knex, Promise) {
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
     tbl.boolean("permanent").notNullable();
-    tbl.integer("total_users").notNullable();
+    
+    tbl.string("chatroom_type").notNullable()
+    tbl.float("longitude").notNullable();
+    tbl.float("latitude").notNullable();
     tbl.timestamps(true, true);
   });
 };
