@@ -43,7 +43,7 @@ passport.use(
 			// console.log('google photo:', profile.photos[0].value);
 			
 
-			const existing = await Users.where({
+			const existing = await db('users').where({
 				email: profile.emails[0].value
 			}).first();
 			try {
