@@ -18,8 +18,10 @@ function find() {
   return db("users");
 }
 
-function findById(id) {
-  return db("users").where({ id }).returning('id');
+async function findById(id) {
+  let user = await db("users").where({ id }).first();
+
+  return user
 }
 
 function update(id, event) {
