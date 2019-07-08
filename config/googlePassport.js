@@ -29,7 +29,8 @@ passport.deserializeUser(async function(id, done) {
 				new Error('User not found' + id)
 		}
 		return done(null, user);
-	});
+	})
+	.catch(err => console.log(err))
 });
 
 passport.use(
