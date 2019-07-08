@@ -3,6 +3,7 @@ const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const keys = require('../auth/keys');
 const db = require('../database/dbConfig');
+const uH = require('../routes/users/userHelper')
 
 const tokenService = require('../auth/tokenService');
 
@@ -60,7 +61,7 @@ passport.use(
 					done(null, existing);
 				} else {
 					const newUser = 
-					await db('users').insert({
+					await db('users').uH.add({
 						first_name: profile.name.givenName,
 						last_name: profile.name.familyName,
 						email: profile.emails[0].value,
@@ -69,7 +70,7 @@ passport.use(
 						anonymous: true,
 						token: accessToken,
 						photo: profile.photos[0].value
-					}).returning('id');
+					});
 					// const newUser = await Users.where({
 					// 	email: profile.emails[0].value
 					// });

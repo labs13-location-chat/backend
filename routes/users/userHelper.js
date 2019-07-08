@@ -4,8 +4,15 @@ module.exports = {
   find,
   findById,
   update,
-  remove
+  remove,
+  add
 };
+
+async function add(user) {
+  const [id] = await db('users').insert(user)
+
+  return findById(id)
+}
 
 function find() {
   return db("users");
