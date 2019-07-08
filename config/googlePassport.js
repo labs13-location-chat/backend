@@ -61,7 +61,7 @@ passport.use(
 					done(null, existing);
 				} else {
 					const newUser = 
-					await db('users').add({
+					await uH('users').add({
 						first_name: profile.name.givenName,
 						last_name: profile.name.familyName,
 						email: profile.emails[0].value,
