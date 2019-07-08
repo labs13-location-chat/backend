@@ -24,7 +24,8 @@ passport.deserializeUser(async function(id, done) {
 	// const Users = db('users');
 	console.log("DESERIALIZE", id)
 	let idToNum = parseInt(id.id)
-	await db('users').where({ id: idToNum }).then(user => {
+	// await db('users').where({ id: idToNum }).then(user => {
+	await uH.find().where({ id: idToNum }).then(user => {
 		console.log("USERRRRRR", user)
 		if (!user) {
 			return done(user, null);
@@ -48,7 +49,8 @@ passport.use(
 			// console.log('google photo:', profile.photos[0].value);
 			
 
-			const existing = await db('users').where({
+			// const existing = await db('users').where({
+			const existing = await uH.find().where({
 				email: profile.emails[0].value
 			}).first();
 			try {
