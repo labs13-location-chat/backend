@@ -30,7 +30,7 @@ server.use(
 		saveUninitialized: true,
 		cookie: {
 			path: '/',
-			httpOnly: true,
+			httpOnly: false,
 			secure: false,
 			maxAge: 24 * 60 * 60 * 1000
 		},
