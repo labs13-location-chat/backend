@@ -17,9 +17,9 @@ async function addLocation(location) {
 }
 
 async function find() {
-  let chatrooms = await db("chatrooms as cr").join("location as l", "l.chatroom_id", "cr.id")
+  // let chatrooms = await db("chatrooms as cr").join("location as l", "l.chatroom_id", "cr.id")
 
-  return chatrooms
+  return db("chatrooms")
 }
 
 function getLocations() {

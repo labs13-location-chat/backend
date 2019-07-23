@@ -3,7 +3,8 @@ const passport = require('passport');
 const router = express();
 
 router.get('/login', (req, res) => {
-	res.render('login', { users: req.session.user });
+	// console.log("REQUEST from /login route!!", req)
+	res.render('login', { users: req.user });
 });
 
 // auth with google
@@ -17,13 +18,13 @@ router.get(
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-	console.log('USER', req.user);
+	// console.log('USER', req.user,'req', res);
 	res.redirect('labs13localchat://login?user=' + JSON.stringify(req.user));
 });
 
 router.get(
 	'/google/callback',
-	passport.authenticate('google', {
+	passport.authenticate('google',	{
 		failureRedirect: '/login'
 	}),
 	function(req, res) {
