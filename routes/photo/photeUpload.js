@@ -8,7 +8,7 @@ router.post('/upload', multerUploads, (req, res) => {
 	if (req.file) {
 		const file = dataUri(req).content;
 		return uploader.upload(file).then(result => {
-			const photo = result.url;
+			const photo = result.secure_url;
 			return res
 				.status(200)
 				.json({
