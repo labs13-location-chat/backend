@@ -45,20 +45,26 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const chatroom = req.body;
   if (!chatroom) {
     res.json({ message: "please provide required fields" });
   } else {
-    db.add(req.body)
-      .then(chatroom => {
-        res.status(200).json(chatroom);
-      })
-      .catch(err => {
-        res.status(500).json({ error: "Error Posting chatroom" });
-      });
-  }
-});
+    try {
+      const chatroom = await db.add(req.body)
+      res.status(200).json(chatroom);
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ error: "Error Posting chatroom" });
+    }
+  //   db.add(req.body)
+  //     .then(chatroom => {
+  //     })
+  //     .catch(err => {
+  //     });
+  // }
+}})
+
 
 router.delete("/:id", (req, res) => {
   const id = req.params.id;

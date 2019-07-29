@@ -39,7 +39,10 @@ async function findById(id) {
 }
 
 function add(chatroom) {
-  return db("chatrooms").insert(chatroom);
+  // const [id] = db("chatrooms").insert(chatroom);
+  return db('chatrooms').insert(chatroom)
+  
+  // return findById(id)
 }
 
 function remove(id) {
