@@ -33,13 +33,9 @@ router.get(
 
 router.get("/logout", (req, res) => {
   if (req.session) {
-    res.status(200).clearCookie("connect.sid", {
-      path: "/"
-    });
-    req.logOut();
-    req.session.destroy(err => {
-      res.redirect("/auth/login");
-    });
+    req.logout();
+    req.session.destroy();
+    res.redirect("/auth/login");
   } else {
     res.end();
   }

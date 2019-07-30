@@ -25,7 +25,7 @@ server.use(
   session({
     secret: [keys.session.secret],
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
       path: "/",
       httpOnly: true,
