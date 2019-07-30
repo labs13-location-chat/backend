@@ -24,22 +24,22 @@ const server = express();
 
 // cookie session -stores cookie in browser
 server.use(
-	session({
-		secret: [ keys.session.secret ],
-		resave: false,
-		saveUninitialized: true,
-		cookie: {
-			path: '/',
-			httpOnly: false,
-			secure: false,
-			maxAge: 24 * 60 * 60 * 1000
-		},
-		store: new knexSessionStore({
-			knex: require('../database/dbConfig'),
-			createTable: true,
-			clearInterval: 1000 * 60 * 15
-		})
-	})
+  session({
+    secret: [keys.session.secret],
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      path: "/",
+      httpOnly: true,
+      secure: false,
+      maxAge: 24 * 60 * 60 * 1000
+    },
+    store: new knexSessionStore({
+      knex: require("../database/dbConfig"),
+      createTable: true,
+      clearInterval: 1000 * 60 * 15
+    })
+  })
 );
 
 // initialize passport
