@@ -36,17 +36,12 @@ router.get(
 
 
 router.get("/logout", (req, res) => {
- app.post('/logout', (req, res) => {
   req.logout();
   req.session.destroy((err) => {
     res.clearCookie('connect.sid');
     res.redirect("/auth/login')
     
   });
-});
-
-
-  
 });
 
 router.get(
