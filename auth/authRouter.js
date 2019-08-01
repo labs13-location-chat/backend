@@ -32,7 +32,7 @@ router.get(
   }
 );
 
-router.get("/logout", async (req, res) => {
+router.get("/logout", (req, res) => {
     req.logout();
     req.session.destroy((err) => {
     res.clearCookie('connect.sid');
