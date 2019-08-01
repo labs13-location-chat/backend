@@ -33,12 +33,10 @@ router.get(
 );
 
 router.get("/logout", (req, res) => {
-    req.logout();
-    req.session.destroy((err) => {
-    res.clearCookie('connect.sid');
-    res.redirect("/auth/login");
-   
-  });
+    req.logOut();
+    req.session.destroy(function (err) {
+        res.redirect('/'); //Inside a callback… bulletproof!
+    });
 
 });
 
