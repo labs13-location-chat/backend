@@ -35,11 +35,16 @@ router.get(
 );
 
 
-router.get("/logout", async (req, res) => {
-  
-   await req.logout();
-   await req.session.destroy();
-   await res.redirect("/auth/login");
+router.post("/logout", async (req, res) => {
+ app.post('/logout', (req, res) => {
+  req.logout();
+  req.session.destroy((err) => {
+    res.clearCookie('connect.sid');
+    res.redirect("/auth/login')
+    
+  });
+});
+
 
   
 });
