@@ -35,14 +35,11 @@ router.get(
 );
 
 
-router.get("/logout", (req, res) => {
-  if (req.session) {
-    req.logout();
-    req.session.destroy();
-    res.redirect("/auth/login");
-  } else {
-    res.end();
-  }
+router.get("/logout", async (req, res) => {
+  
+   await req.logout();
+   await req.session.destroy();
+   await res.redirect("/auth/login");
 
   
 });
