@@ -1,29 +1,17 @@
-🚫 Note: All lines that start with 🚫 are instructions and should be deleted before this is posted to your portfolio. This is intended to be a guideline. Feel free to add your own flare to it..
-
-<<<<<<< HEAD
-🚫 The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by. Make sure to delete the numbers by the end of Labs.
-=======
-🚫 The numbers 1️⃣ through 3️⃣ next to each item represent the week that part of the docs needs to be comepleted by.  Make sure to delete the numbers by the end of Labs
->>>>>>> 6cbc963db04c6e3c4086418fb4bc51e9648d1f2d
-
-🚫 Each student has a required minimum number of meaningful PRs each week per the rubric. Contributing to docs does NOT count as a PR to meet your weekly requirements.
-
 # API Documentation
 
-#### 1️⃣ Backend delpoyed at [🚫name service here](🚫add URL here) <br>
+#### 1️⃣ ChatMaps (Location Chat) Backend delpoyed at [Heroku](https://labs13-localchat.herokuapp.com/) <br>
 
 ## 1️⃣ Getting started
 
 To get the server running locally:
-
-🚫 adjust these scripts to match your project
 
 - Clone this repo
 - **yarn install** to install all required dependencies
 - **yarn server** to start the local server
 - **yarn test** to start server using testing environment
 
-### Backend framework goes here
+### Node.js & Express
 
 🚫 Why did you choose this framework?
 
@@ -34,45 +22,58 @@ To get the server running locally:
 
 ## 2️⃣ Endpoints
 
-🚫This is a placeholder, replace the endpoints, access controll, and descriptioin to match your project
 
-#### Organization Routes
+#### Auth Routes
 
-| Method | Endpoint                | Access Control | Description                                  |
-| ------ | ----------------------- | -------------- | -------------------------------------------- |
-| GET    | `/organizations/:orgId` | all users      | Returns the information for an organization. |
-| PUT    | `/organizatoins/:orgId` | owners         | Modify an existing organization.             |
-| DELETE | `/organizations/:orgId` | owners         | Delete an organization.                      |
+| Method | Endpoint           | Access Control | Description                              |
+| ------ | ------------------ | -------------- | ---------------------------------------- |
+| GET    | `/google`          | users          | Requests authorization of user object from Google.           |
+| GET    | `/google/callback` | users          | Google redirects the user back to this application at the callback after authorization |
+| GET    | `/google/redirect` | users          |    Redirects the user back to the app on successful authentication, registering user to the app database and/or logging in user.     |
+| GET    | `/facebook`          | users          | Requests authorization of user object from Facebook.         |
+| GET    | `/facebook/callback` | users          | Facebook redirects the user back to this application at the callback after authorization  |
+| GET    | `/facebook/redirect` | users          |   Redirects the user back to the app on successful authentication, registering user to the app database and/or logging in user.|
+
+| GET    | `/logout`          | users          | Logs out user from app.                  |
 
 #### User Routes
 
-| Method | Endpoint                | Access Control      | Description                                        |
-| ------ | ----------------------- | ------------------- | -------------------------------------------------- |
-| GET    | `/users/current`        | all users           | Returns info for the logged in user.               |
-| GET    | `/users/org/:userId`    | owners, supervisors | Returns all users for an organization.             |
-| GET    | `/users/:userId`        | owners, supervisors | Returns info for a single user.                    |
-| POST   | `/users/register/owner` | none                | Creates a new user as owner of a new organization. |
-| PUT    | `/users/:userId`        | owners, supervisors |                                                    |
-| DELETE | `/users/:userId`        | owners, supervisors |                                                    |
+| Method | Endpoint         | Access Control | Description                          |
+| ------ | ---------------- | -------------- | ------------------------------------ |
+| GET    | `/users`         | users          | Returns info for all users. |
+| GET    | `/users/:id` | users          | Returns info for a user.      |
+| PUT    | `/users/:id` | users          | Updates user info.                   |
 
-# Data Model
+#### Photo Upload Route
 
-🚫This is just an example. Replace this with your data model
+| Method | Endpoint  | Access Control | Description                 |
+| ------ | --------- | -------------- | --------------------------- |
+| GET    | `/upload` | users          | Upload photo to cloudinary. |
 
-#### 2️⃣ ORGANIZATIONS
+#### Chatroom Routes
 
----
+| Method | Endpoint                   | Access Control | Description                          |
+| ------ | -------------------------- | -------------- | ------------------------------------ |
+| GET    | `/chatrooms`               | users          | Returns all chatrooms. |
+| GET    | `/chatrooms/:id`           | users          | Returns info for a single chatroom. |
+| POST   | `/chatrooms`               | users          | Returns created chatroom. |
+| PUT    | `/chatrooms/:id`           | users          | Updates info for a chatroom. |
+| DELETE | `/chatrooms/:id`           | users          | Deletes a chatroom |
+| GET    | `/chatrooms/locations`     | users          | Returns info for a single user.      |
+| POST   | `/chatrooms/:id/locations` | users          | Returns created chatroom coordinates.                   |
 
-```
-{
-  id: UUID
-  name: STRING
-  industry: STRING
-  paid: BOOLEAN
-  customer_id: STRING
-  subscription_id: STRING
-}
-```
+#### Message Routes
+
+| Method | Endpoint        | Access Control | Description                          |
+| ------ | --------------- | -------------- | ------------------------------------ |
+| GET    | `/messages`     | users          | Returns all messages. |
+| GET    | `/messages/:id` | users          | Returns info for a single user.      |
+| POST   | `/messages`     | users          | Returns created messages.                   |
+| PUT    | `/messages/:id` | users          | Updates message info.                   |
+| DELETE | `/messages/:id` | users          | Deletes message.                   |
+
+## 2️⃣ Data Models
+
 
 #### USERS
 
@@ -80,58 +81,123 @@ To get the server running locally:
 
 ```
 {
-  id: UUID
-  organization_id: UUID foreign key in ORGANIZATIONS table
+  id: INTEGER
+  email: STRING
+  password: STRING
   first_name: STRING
   last_name: STRING
-  role: STRING [ 'owner', 'supervisor', 'employee' ]
-  email: STRING
-  phone: STRING
-  cal_visit: BOOLEAN
-  emp_visit: BOOLEAN
-  emailpref: BOOLEAN
-  phonepref: BOOLEAN
+  user_type: STRING
+  anonymous: BOOLEAN
+  phone_num: STRING
+  facebook_id: STRING
+  google_id: STRING
+  token: STRING
+  photo: STRING
 }
 ```
 
+#### CHATROOMS
+
+---
+
+```
+{
+  id: INTEGER
+  name: STRING
+  chatroom_url: STRING
+  description: TEXT
+  img_url: TEXT
+  user_id: INTEGER
+  permanent: BOOLEAN
+  chatroom_type: STRING
+  longitude: FLOAT
+  latitude: FLOAT
+  created_at: TIMESTAMPS
+  updated_at: TIMESTAMPS
+}
+```
+
+#### MESSAGES
+
+---
+
+```
+{
+  id: INTEGER
+  chatroom_id: INTEGER
+  content: STRING
+  user_id: INTEGER
+  img_url: TEXT
+  user_id: INTEGER
+  permanent: BOOLEAN
+  chatroom_type: STRING
+  longitude: FLOAT
+  latitude: FLOAT
+  created_at: TIMESTAMPS
+  updated_at: TIMESTAMPS
+}
+```
 ## 2️⃣ Actions
 
-🚫 This is an example, replace this with the actions that pertain to your backend
+###Users
 
-`getOrgs()` -> Returns all organizations
+`find()` -> Returns all users
 
-`getOrg(orgId)` -> Returns a single organization by ID
+`findById(id)` -> Returns a user by ID
 
-`addOrg(org)` -> Returns the created org
+`add(user)` -> Returns the created user
 
-`updateOrg(orgId)` -> Update an organization by ID
+`update(id, event)` -> Update a user by ID
 
-`deleteOrg(orgId)` -> Delete an organization by ID
+`remove(id)` -> Delete a user by ID
+
 <br>
+###Chatrooms
+`find()` -> Returns all chatrooms
+
+`findById(id)` -> Returns a chatroom by ID
+
+`getLocations()` -> Returns all chatrooms
+
+`add(chatroom)` -> Returns the created chatroom
+
+`addLocations(location)` -> Returns the created location
+
+`addCoords(coords)` -> Returns the created coordinates
+
+`update(id, chatroom)` -> Update a chatroom by ID
+
+`remove(id)` -> Delete a chatroom by ID
+
 <br>
-<br>
-`getUsers(orgId)` -> if no param all users
+###Messages
+`find()` -> Returns all users
 
-`getUser(userId)` -> Returns a single user by user ID
+`findById(id)` -> Returns a message by ID
 
-`addUser(user object)` --> Creates a new user and returns that user. Also creates 7 availabilities defaulted to hours of operation for their organization.
+`add(message)` -> Returns the created message
 
-`updateUser(userId, changes object)` -> Updates a single user by ID.
+`update(id, event)` -> Update a message by ID
 
-`deleteUser(userId)` -> deletes everything dependent on the user
+`remove(id)` -> Delete a message by ID
 
 ## 3️⃣ Environment Variables
 
 In order for the app to function correctly, the user must set up their own environment variables.
 
 create a .env file that includes the following:
-
-🚫 These are just examples, replace them with the specifics for your app
-  
- _ STAGING_DB - optional development db for using functionality not available in SQLite
-_ NODE_ENV - set to "development" until ready for "production"
-_ JWT_SECRET - you can generate this by using a python shell and running import random''.join([random.SystemRandom().choice('abcdefghijklmnopqrstuvwxyz0123456789!@#\$%^&amp;_(-_=+)') for i in range(50)])
-_ SENDGRID_API_KEY - this is generated in your Sendgrid account \* stripe_secret - this is generated in the Stripe dashboard
+ 
+* AccessControlAllowOrigin - Set to ```localhost```. Allows access for localhost port
+* BASE_URL - Set to ```localhost``` port
+* DATABASE_URL - Url for PostgreSQL database
+* DB_ENV - Set to value of database environment
+* FB_APP_ID - App ID of project created on Facebook for Developers
+* FB_APP_SECRET - App secret of project created on Facebook for Developers
+* GOOGLE_CLIENT_ID - Client ID of project created on Google Developer Console
+* GOOGLE_CLIENT_SECRET - Client secret of project created on Google Developer Console
+* CLOUDINARY_API_NAME - Api name of account created on Cloudinary
+* CLOUDINARY_API_SECRET - Api secret of account created on Cloudinary
+* CLOUDINARY_API_KEY - Api key of account created on Cloudinary
 
 ## Contributing
 
@@ -172,5 +238,6 @@ These contribution guidelines have been adapted from [this good-Contributing.md-
 
 ## Documentation
 
-See [Frontend Documentation](🚫link to your frontend readme here) for details on the fronend of our project.
-🚫 Add DS iOS and/or Andriod links here if applicable.
+See [Frontend Documentation](https://github.com/labs13-location-chat/mobile/tree/development) for details on the frontend of our project.
+Download the app in the [Google Play Store](https://play.google.com/store/apps/details?id=com.labs13localchat)
+
