@@ -33,7 +33,6 @@ To get the server running locally:
 | GET    | `/facebook`          | users          | Requests authorization of user object from Facebook.         |
 | GET    | `/facebook/callback` | users          | Facebook redirects the user back to this application at the callback after authorization  |
 | GET    | `/facebook/redirect` | users          |   Redirects the user back to the app on successful authentication, registering user to the app database and/or logging in user.|
-
 | GET    | `/logout`          | users          | Logs out user from app.                  |
 
 #### User Routes
@@ -139,7 +138,7 @@ To get the server running locally:
 ```
 ## 2️⃣ Actions
 
-###Users
+### Users
 
 `find()` -> Returns all users
 
@@ -152,7 +151,9 @@ To get the server running locally:
 `remove(id)` -> Delete a user by ID
 
 <br>
-###Chatrooms
+
+### Chatrooms
+
 `find()` -> Returns all chatrooms
 
 `findById(id)` -> Returns a chatroom by ID
@@ -170,7 +171,9 @@ To get the server running locally:
 `remove(id)` -> Delete a chatroom by ID
 
 <br>
-###Messages
+
+### Messages
+
 `find()` -> Returns all users
 
 `findById(id)` -> Returns a message by ID
